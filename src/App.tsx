@@ -1,11 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 
 import './home.sass';
+import HowEmpireCanBeUsed from './components/HowEmpireCanBeUsed';
 
 function App() {
   return (
     <>
+      <div className="HowEmpireCanBeUsedWrapper">
+        <HowEmpireCanBeUsed/>
+      </div>
     </>
   );
 }
