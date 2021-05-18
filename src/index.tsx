@@ -4,11 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+const overlay = document.createElement('div');
+overlay.className = 'react-overlay';
+document.body.append(overlay);
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  overlay,
 );
 
 // If you want to start measuring performance in your app, pass a function
