@@ -1,36 +1,76 @@
+@mixin HideScrollbars
+  &::-webkit-scrollbar 
+    display: none
+  -ms-overflow-style: none // IE/Edge
+  scrollbar-width: none // Firefox
+
+$cardWidth: 343px
+$cardHeight: 427px
+$expandedWidth: 397px
+$expandedHeight: 493px
+
 .CardCarousel
+  box-sizing: border-box
   width: 100%
   height: 100%
-  box-sizing: border-box
   display: flex
-  flex-direction: row
-  align-items: center
-  .CardCarouselCard
-    margin: 20px
-    width: 343px
-    height: 427px
+  flex-direction: column
+  .CardCarouselSlides
+    @include HideScrollbars
     box-sizing: border-box
-    padding: 20px
-    border-radius: 8px
-    background: radial-gradient(#204169, #102135)
-    border: 1px solid #0F6BAE
-
-    color: white
-
     display: flex
-    flex-direction: column
-    justify-content: center
+    flex-direction: row
     align-items: center
+    flex-grow: 1
+    overflow-x: auto
+    &::before, &::after
+      content: "(spacer)"
+      visibility: hidden
+      min-width: calc(50% - #{$cardWidth}/2)
 
-    h2
-      font-size: 32px
-      text-shadow: 0px 3px 8px black
-      text-align: center
+      flex-shrink: 0
+    .CardCarouselSpacer
+      flex-shrink: 0
+    .CardCarouselCard
+      flex-shrink: 0
       margin: 20px
+      width: $cardWidth
+      height: $cardHeight
+      box-sizing: border-box
+      padding: 20px
+      border-radius: 8px
+      background: radial-gradient(#204169, #102135)
+      border: 1px solid #0F6BAE
 
-    p
-      text-align: center
-      font-size: 16px
-      font-weight: 200
-      color: #E3E3E3
-      line-height: 1.7em
+      color: white
+
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+
+      h2, p
+        width: calc(#{$cardWidth} - 50px)
+        box-sizing: border-box
+        
+      h2
+        font-size: 32px
+        text-shadow: 0px 3px 8px black
+        text-align: center
+        margin: 20px
+
+      p
+        text-align: center
+        font-size: 16px
+        font-weight: 200
+        color: #E3E3E3
+        line-height: 1.7em
+
+
+      transition: box-shadow 1s, width .3s, height .3s
+      &.InFocus
+        border: 1.5px solid #18E9D9
+        background: radial-gradient(#204169, #204169, #33699A)
+        box-shadow: 0px 3px 33px rgba(#18E9D9, .55)
+        width: $expandedWidth
+        height: $expandedHeight

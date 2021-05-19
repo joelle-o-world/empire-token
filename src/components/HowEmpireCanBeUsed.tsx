@@ -15,6 +15,12 @@ export const HowEmpireCanBeUsed: FunctionComponent = () => {
       <h2>Podcast</h2>
       <p>Launch of our podcast app where users can tip podcasters using the Empire token. It would be good to add some more text here so it balances out with the other text boxes. That would be great. </p>
     </Card>
+    <Card>
+      placeholder
+    </Card>
+    <Card>
+      placeholder
+    </Card>
   </CardCarousel>
 }
 
