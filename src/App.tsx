@@ -9,6 +9,10 @@ function App() {
       <div className="HowEmpireCanBeUsedWrapper">
         <HowEmpireCanBeUsed/>
       </div>
+
+      <div className="CountdownWrapper">
+
+      </div>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React, {FunctionComponent,    useRef,  useState,  cloneElement} from 'react';
+import React, {FunctionComponent,    useRef,  useState,  cloneElement, useEffect} from 'react';
 import classNames from 'classnames';
 
 import './CardCarousel.sass'
@@ -13,6 +13,23 @@ export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
   const numberOfPages = React.Children.count(children);
   const [focussedCardIndex, setFocussedCardIndex] = useState(0)
 
+  const slidesRef = useRef(null as null|HTMLUListElement)
+  const focusCard = (i: number) => {
+    let slides = slidesRef.current
+    if(slides) {
+      let card = slides.childNodes[i];
+      if(card && card instanceof HTMLElement) {
+        let {left, width} = card.getBoundingClientRect();
+        let targetLeft = window.innerWidth/2 - width/2
+        slides.scrollTo({
+          left:slides.scrollLeft -targetLeft + left,
+          behavior: 'smooth'
+        })
+      }
+    }
+  }
+
+  useEffect(() => focusCard(1), [])
 
   const handleDoneScrolling = (e:any) => {
     const div = e.nativeEvent.target as HTMLDivElement
@@ -46,16 +63,19 @@ export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
   }
 
   return <div className="CardCarousel" >
-    <ul className="CardCarouselSlides" onScroll={handleDoneScrolling}>
+    <ul className="CardCarouselSlides" onScroll={handleDoneScrolling} ref={slidesRef}>
     {
       React.Children.map(children, (child, i) => {
-        if(React.isValidElement(child) && i === focussedCardIndex) {
+        if(React.isValidElement(child)) {
           console.log('HEERE', i, child);
-          let className = classNames(
-            child.props.className,
-            'InFocus'
-          )
-          return cloneElement(child, {className})
+          let className = child.props.className
+          if(i === focussedCardIndex)
+            className = classNames(className, 'InFocus')
+
+          return cloneElement(child, {
+            className,
+            onClick: () => focusCard(i),
+          })
 
         } else return child
       })
@@ -64,15 +84,16 @@ export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
     <LittleButtons 
       numberOfButtons={numberOfPages}
       current={focussedCardIndex}
+      onClick={i => focusCard(i)}
     />
   </div>
 }
 
 export default CardCarousel;
 
-export const Card: FunctionComponent<{className?:string}> = ({children, className}) => {
+export const Card: FunctionComponent<{className?:string; onClick?: () => void}> = ({children, className, onClick}) => {
 
-  return <li className={classNames("CardCarouselCard", className)}>
+  return <li className={classNames("CardCarouselCard", className)} onClick={onClick}>
     {children}
   </li>
 }
