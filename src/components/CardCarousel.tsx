@@ -4,6 +4,9 @@ import classNames from 'classnames';
 import './CardCarousel.sass'
 import {LittleButtons} from './LittleButtons';
 
+const standardWidth = 343
+const expandedWidth = 397
+
 export interface CardCarouselProps {
 }
 
@@ -19,8 +22,10 @@ export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
     if(slides) {
       let card = slides.childNodes[i];
       if(card && card instanceof HTMLElement) {
-        let {left, width} = card.getBoundingClientRect();
-        let targetLeft = window.innerWidth/2 - width/2
+        let {left} = card.getBoundingClientRect();
+        let targetLeft = window.innerWidth/2 - expandedWidth/2
+        if(i > focussedCardIndex)
+          targetLeft += expandedWidth - standardWidth
         slides.scrollTo({
           left:slides.scrollLeft -targetLeft + left,
           behavior: 'smooth'

@@ -26,12 +26,13 @@ $expandedHeight: 493px
     &::before, &::after
       content: "(spacer)"
       visibility: hidden
-      min-width: calc(50% - #{$cardWidth}/2)
+      min-width: calc(50% - #{$expandedWidth}/2)
 
       flex-shrink: 0
     .CardCarouselSpacer
       flex-shrink: 0
     .CardCarouselCard
+      position: relative
       flex-shrink: 0
       margin: 20px
       width: $cardWidth
@@ -39,7 +40,7 @@ $expandedHeight: 493px
       box-sizing: border-box
       padding: 20px
       border-radius: 8px
-      background: radial-gradient(#204169, #102135)
+      background: radial-gradient(rgba(#204169, 0.9), rgba(#102135, 0.9))
       border: 1px solid #0F6BAE
       cursor: default
 
@@ -68,10 +69,20 @@ $expandedHeight: 493px
         line-height: 1.7em
 
 
-      transition: box-shadow 1s, width .3s, height .3s
+      transition: box-shadow 1.5s , width .3s, height .3s
       &.InFocus
         border: 1.5px solid #18E9D9
-        background: radial-gradient(#204169, #204169, #33699A)
+        background: radial-gradient(rgba(#204169, 0.9), rgba(#204169, 0.9), rgba(#33699A, 0.9))
         box-shadow: 0px 3px 33px rgba(#18E9D9, .55)
         width: $expandedWidth
         height: $expandedHeight
+        &::before
+          content: " "
+          position: absolute
+          top: 13px
+          right: 13px
+          bottom: 13px
+          left: 13px
+          border: 1px dashed #4FA4E1 
+          border-radius: 5px
+          opacity: 0.8
