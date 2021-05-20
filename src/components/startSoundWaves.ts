@@ -5,11 +5,17 @@ import quickCompileProgram from '../gl/quickCompileProgram';
 const SoundWavesVShader = `
 precision mediump float;
 
+uniform float phase;
+
+float y1, y2;
+
 attribute vec2 position;
 void main() {
+  y1 = -sin(-position.x + 0.1 +phase);
+  y2 = sin(position.x * 7.0 + 0.5 * position.y - phase * 3.0);
   gl_Position = vec4(
     position.x, 
-    sin(position.x + position.y*0.1) * position.y, 
+    position.y * y2 + (1.0-position.y) * y1,
     0.5, 
     1.0
   );
@@ -20,7 +26,7 @@ const SoundWavesFShader = `
 precision mediump float;
 
 void main() {
-  gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+  gl_FragColor = vec4(1.0, 1.0, 1.0, .1);
 }
 `
 
@@ -40,8 +46,6 @@ export function startSoundWaves(canvas: HTMLCanvasElement):void {
   const {vertexData, numberOfVertices, elementsPerVertex} = makeGridBuffer({
     width: 2,
     xShift: -1,
-    height: 2,
-    yShift: -1
   });
   const bufferObject = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, bufferObject);
@@ -58,11 +62,14 @@ export function startSoundWaves(canvas: HTMLCanvasElement):void {
   )
   gl.enableVertexAttribArray(positionAttribLocation);
 
-  //gl.useProgram(program);
-
-  console.log(vertexData, numberOfVertices)
+  // Expose uniforms
+  const phaseUniform = gl.getUniformLocation(program, 'phase');
+  let phase = 0
 
   const loop = () => {
+    phase += 0.01
+    gl.uniform1f(phaseUniform, phase)
+
     gl.clearColor(0,0,0,0);
     gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT);
     gl.drawArrays( gl.LINE_STRIP, 0, numberOfVertices)
@@ -75,8 +82,8 @@ export function startSoundWaves(canvas: HTMLCanvasElement):void {
 
 
 function makeGridBuffer({
-  rows=16,
-  cols=16,
+  rows=30,
+  cols=10,
   xShift=0, yShift=0,
   width=1,
   height=1,
