@@ -72,7 +72,6 @@ export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
     {
       React.Children.map(children, (child, i) => {
         if(React.isValidElement(child)) {
-          console.log('HEERE', i, child);
           let className = child.props.className
           if(i === focussedCardIndex)
             className = classNames(className, 'InFocus')
