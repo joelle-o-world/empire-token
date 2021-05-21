@@ -9,7 +9,7 @@ export const SoundWaves: FunctionComponent = () => {
     if(canvas) {
       startSoundWaves(canvas)
     }
-  }, [canvasRef.current])
+  }, [])
 
   return <canvas width="1000px" height="500px" className="SoundWaves" ref={canvasRef}/>
 }

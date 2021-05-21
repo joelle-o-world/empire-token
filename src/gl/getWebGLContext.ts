@@ -12,7 +12,7 @@ export function getWebGLContext(canvas: HTMLCanvasElement):WebGLRenderingContext
   if(gl !== null && gl !== undefined)
     return gl
   else
-    throw "Your browser does not support WebGL"
+    throw new Error("Your browser does not support WebGL")
 }
 
 export default getWebGLContext;

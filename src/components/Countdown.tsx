@@ -91,7 +91,8 @@ export const CountdownClock: FunctionComponent<CountdownClockProps> = ({fromTime
         draw()
       }
     }
-  }, [canvasRef.current])
+    // eslint-disable-next-line
+  }, [])
 
   return <div className="CountdownClock">
     <canvas width={width+'px'} height={height+'px'} ref={canvasRef} />

@@ -18,8 +18,8 @@ export const LittleButtons: FunctionComponent<LittleButtonsProps> = ({
   let buttons = [];
   for(let i=0; i < numberOfButtons; ++i)
     buttons.push(
-      <span className="LittleButtonWrapper" onClick={() => onClick && onClick(i)}>
-        <FaCircle className={`LittleButton ${current === i ? "current" : "not-current"}`} key={i}  />
+      <span className="LittleButtonWrapper" onClick={() => onClick && onClick(i)} key={i}>
+        <FaCircle className={`LittleButton ${current === i ? "current" : "not-current"}`} />
       </span>
     )
 

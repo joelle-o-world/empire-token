@@ -9,15 +9,15 @@ export function quickCompileProgram(
 
   const program = gl.createProgram();
   if(!program)
-    throw "Unable to create GL program";
+    throw new Error("Unable to create GL program");
   gl.attachShader(program, vertexShader);
   gl.attachShader(program, fragmentShader);
   gl.linkProgram(program);
   if(!gl.getProgramParameter(program, gl.LINK_STATUS))
-    throw `Error linking GL program: ${gl.getProgramInfoLog(program)}`;
+    throw new Error(`Error linking GL program: ${gl.getProgramInfoLog(program)}`);
   gl.validateProgram(program);
   if(!gl.getProgramParameter(program, gl.VALIDATE_STATUS))
-    throw `Error validating program: ${gl.getProgramInfoLog(program)}`;
+    throw new Error(`Error validating program: ${gl.getProgramInfoLog(program)}`);
 
   return program;
 }
@@ -31,13 +31,13 @@ export function compileShader(
 ) {
   const shader = gl.createShader(shaderType);
   if(!shader)
-    throw "Unable to create vertex shader";
+    throw new Error("Unable to create vertex shader");
   gl.shaderSource(shader, shaderSource);
   gl.compileShader(shader);
   if(!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
-    throw `Error compiling ${
+    throw new Error(`Error compiling ${
       shaderType === gl.VERTEX_SHADER ? "vertex" : "fragment"
-    } shader: ${gl.getShaderInfoLog(shader)}`
+    } shader: ${gl.getShaderInfoLog(shader)}`)
 
   return shader
 }

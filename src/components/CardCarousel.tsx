@@ -1,4 +1,4 @@
-import React, {FunctionComponent,    useRef,  useState,  cloneElement, useEffect} from 'react';
+import React, {FunctionComponent,    useRef,  useState,  cloneElement} from 'react';
 import classNames from 'classnames';
 
 import './CardCarousel.sass'
@@ -34,7 +34,6 @@ export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
     }
   }
 
-  useEffect(() => focusCard(1), [])
 
   const handleDoneScrolling = (e:any) => {
     const div = e.nativeEvent.target as HTMLDivElement
@@ -58,14 +57,14 @@ export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
     }
   }
 
-  const scrollTimerRef = useRef(null as null|ReturnType<typeof setTimeout>)
-  const handleScroll = (e:any) => {
-    if(scrollTimerRef.current !== null)
-      clearTimeout(scrollTimerRef.current);
-    scrollTimerRef.current = setTimeout(() => {
-      handleDoneScrolling(e)
-    }, 50)
-  }
+  //const scrollTimerRef = useRef(null as null|ReturnType<typeof setTimeout>)
+  //const handleScroll = (e:any) => {
+    //if(scrollTimerRef.current !== null)
+      //clearTimeout(scrollTimerRef.current);
+    //scrollTimerRef.current = setTimeout(() => {
+      //handleDoneScrolling(e)
+    //}, 50)
+  //}
 
   return <div className="CardCarousel" >
     <ul className="CardCarouselSlides" onScroll={handleDoneScrolling} ref={slidesRef}>
