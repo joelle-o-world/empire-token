@@ -12,10 +12,10 @@ float y1, y2;
 attribute vec2 position;
 void main() {
   y1 = -sin(-position.x + 0.1 +phase);
-  y2 = abs(1.0-position.x) * sin(position.x * 7.0 + 0.5 * position.y - phase * 3.0);
+  y2 = abs(0.5 - position.x) * sin(position.x * 7.0 + 0.5 * position.y - phase * 3.0);
   gl_Position = vec4(
     position.x, 
-    position.y * y2 + (1.0-position.y) * y1,
+    .5*(position.y * y2 + (1.0-position.y) * y1),
     0.5, 
     1.0
   );
@@ -26,7 +26,7 @@ const SoundWavesFShader = `
 precision mediump float;
 
 void main() {
-  gl_FragColor = vec4(.27, .29, .31, 0.0);
+  gl_FragColor = vec4(.27, .29, .31, 1.0);
 }
 `
 
@@ -35,6 +35,7 @@ void main() {
   Be sure to handle exceptions when calling this function.
  */
 export function startSoundWaves(canvas: HTMLCanvasElement):void {
+  console.log('startingSoundWaves');
 
   const gl = getWebGLContext(canvas)
 
