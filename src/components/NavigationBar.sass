@@ -1,0 +1,53 @@
+$contentWidth: 1208px
+
+.NavigationBar
+  position: fixed
+  top: 0px
+  left: 0px
+  right: 0px
+  height: 130px
+  padding-top: 26px
+  background: linear-gradient(to bottom, rgb(8,13,61,1), rgba(10,13,49,0.7))
+  z-index: 10
+
+  .SiteLogo
+    position: absolute
+    top: 26px
+    left: calc(50% - #{$contentWidth} / 2 + 2px)
+    
+
+  .NavigationBarMenu
+    position: absolute
+    left: 50%
+    width: calc(#{$contentWidth} / 2)
+    height: 100%
+    .TopRow
+      display: flex
+      flex-direction: row
+      justify-content: space-around
+      align-items: center
+      .SocialMedia
+        display: flex
+        flex-direction: row
+        justify-content: space-around
+        width: 289px
+
+    .BottomRow
+      height: 47px
+    .SiteLinks
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      align-items: center
+      a, :link, :visited
+        display: block
+        padding: 10px
+        color: white
+        font-family: Rubit, sans-serif
+        font-weight: 200
+        font-size: 20px
+        cursor: pointer
+        &:hover
+          background: linear-gradient(45deg, #18E9D9, #4FA4E1, #875FEA)
+          -webkit-background-clip: text
+          -webkit-text-fill-color: rgba(white, .5)
