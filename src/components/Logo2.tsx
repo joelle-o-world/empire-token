@@ -9,23 +9,24 @@ import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
 
 type GLTFResult = GLTF & {
   nodes: {
-    polySurface1: THREE.Mesh
+    mesh_0: THREE.Mesh
   }
-  materials: {
-    initialShadingGroup: THREE.MeshStandardMaterial
-  }
+  materials: {}
 }
 
-const materialToUse = new THREE.MeshPhongMaterial()
+const logoMaterial = new THREE.MeshPhongMaterial({
+  //color: "rgb(81,248,248)"
+  color: "white",
+})
 
 export default function Model(props: JSX.IntrinsicElements['group']) {
   const group = useRef<THREE.Group>()
-  const { nodes, materials } = useGLTF('models/3dLogo.glb') as GLTFResult
+  const { nodes, materials } = useGLTF('models/logo2.glb') as GLTFResult
   return (
     <group ref={group} {...props} dispose={null} scale={0.35}>
-      <mesh geometry={nodes.polySurface1.geometry} material={materialToUse} position={[-33.25, 18.75, 0]}/>
+      <mesh geometry={nodes.mesh_0.geometry} material={logoMaterial} position={[-33.25, 18.75, 0]} />
     </group>
   )
 }
 
-useGLTF.preload('models/3dLogo.glb')
+useGLTF.preload('models/logo2.glb')

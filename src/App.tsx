@@ -13,7 +13,7 @@ function App() {
       <NavigationBar/>
       <div className="HeroSoundWavesWrapper">
       {
-        <SoundWaves/>
+        //<SoundWaves/>
       }
       </div>
 

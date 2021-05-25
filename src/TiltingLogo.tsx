@@ -3,17 +3,30 @@ import {Canvas, useLoader} from '@react-three/fiber'
 
 import {useRelativeMousePosition} from './hooks/useMousePosition'
 
-import Logo from './components/3dLogo'
+import Logo from './components/Logo2'
 
 export const TiltingLogo: FunctionComponent = () => {
   const ref = useRef(null)
   const {mouseX, mouseY} = useRelativeMousePosition(ref)
+
   return <div className="TiltingLogo" ref={ref}>
     <Suspense fallback="something went wrong">
       <Canvas >
-        <ambientLight intensity={0.1}/>
-        <directionalLight intensity={0.5} />
-        <Logo rotation={[mouseY/2500, mouseX/2500, 0]}/>
+        <spotLight 
+          intensity={.5}  
+          color="rgb(81,248,248)"
+          position={[2, 2, 2]}
+        />
+        <spotLight
+          intensity={.5}
+          position={[-2, -2, 2]}
+          color="rgb(144,144,246)"
+        />
+        <Logo rotation={[
+          mouseY/window.innerHeight, 
+          -mouseX/window.innerWidth * .4, 
+          0
+        ]}/>
       </Canvas>
     </Suspense>
   </div>

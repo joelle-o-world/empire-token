@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useCallback} from 'react';
 
 export function useElementPosition(ref: React.MutableRefObject<HTMLElement|null>) {
   const [elementPosition, setElementPosition] = useState({
@@ -10,7 +10,7 @@ export function useElementPosition(ref: React.MutableRefObject<HTMLElement|null>
     elementHeight: 0,
   })
 
-  const refresh = () => {
+  const refresh = useCallback(() => {
     let element = ref.current;
 
     if(element) {
@@ -24,9 +24,9 @@ export function useElementPosition(ref: React.MutableRefObject<HTMLElement|null>
         elementHeight: height,
       })
     }
-  }
+  }, [ref])
 
-  useEffect(refresh, [ref.current])
+  useEffect(refresh, [ref.current, refresh])
   useEffect(() => {
     window.addEventListener('scroll', refresh);
     window.addEventListener('resize', refresh);
