@@ -8,7 +8,7 @@ import Logo from './components/3dLogo'
 export const TiltingLogo: FunctionComponent = () => {
   const ref = useRef(null)
   const {mouseX, mouseY} = useRelativeMousePosition(ref)
-  return <div className="TiltingLogoWrapper" ref={ref}>
+  return <div className="TiltingLogo" ref={ref}>
     <Suspense fallback="something went wrong">
       <Canvas >
         <ambientLight intensity={0.1}/>

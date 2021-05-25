@@ -13,7 +13,7 @@ function App() {
       <NavigationBar/>
       <div className="HeroSoundWavesWrapper">
       {
-        //<SoundWaves/>
+        <SoundWaves/>
       }
       </div>
 
@@ -26,9 +26,9 @@ function App() {
         <Countdown />
       </div>
 
-      {
-        <TiltingLogo/>
-      }
+      <div className="TiltingLogoWrapper">
+        { <TiltingLogo/> }
+      </div>
     </>
   );
 }
