@@ -20,8 +20,8 @@ export default function Model(props: JSX.IntrinsicElements['group']) {
   const group = useRef<THREE.Group>()
   const { nodes, materials } = useGLTF('/models/3dLogo.glb') as GLTFResult
   return (
-    <group ref={group} {...props} dispose={null} scale={0.3}>
-      <mesh geometry={nodes.polySurface1.geometry} material={materials.initialShadingGroup} position={[-34, 19, 0]}/>
+    <group ref={group} {...props} dispose={null} scale={0.35}>
+      <mesh geometry={nodes.polySurface1.geometry} material={materials.initialShadingGroup} position={[-33.25, 18.75, 0]}/>
     </group>
   )
 }

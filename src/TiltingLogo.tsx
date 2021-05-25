@@ -1,19 +1,22 @@
-import React, {FunctionComponent, Suspense} from 'react';
+import React, {FunctionComponent, Suspense, useRef} from 'react';
 import {Canvas, useLoader} from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
-//import {OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
-//import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
+
+import {useRelativeMousePosition} from './hooks/useMousePosition'
 
 import Logo from './components/3dLogo'
 
 export const TiltingLogo: FunctionComponent = () => {
-  return <Suspense fallback="something went wrong">
-    <Canvas>
-      <ambientLight intensity={0.1}/>
-      <directionalLight intensity={0.5} />
-      <Logo/>
-    </Canvas>
-  </Suspense>
+  const ref = useRef(null)
+  const {mouseX, mouseY} = useRelativeMousePosition(ref)
+  return <div className="TiltingLogoWrapper" ref={ref}>
+    <Suspense fallback="something went wrong">
+      <Canvas >
+        <ambientLight intensity={0.1}/>
+        <directionalLight intensity={0.5} />
+        <Logo rotation={[mouseY/2500, mouseX/2500, 0]}/>
+      </Canvas>
+    </Suspense>
+  </div>
 }
 
 export default TiltingLogo;

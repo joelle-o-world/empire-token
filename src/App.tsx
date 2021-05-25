@@ -26,11 +26,9 @@ function App() {
         <Countdown />
       </div>
 
-      <div className="TiltingLogoWrapper">
       {
         <TiltingLogo/>
       }
-      </div>
     </>
   );
 }
