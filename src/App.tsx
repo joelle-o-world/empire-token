@@ -6,6 +6,7 @@ import Countdown from './components/Countdown';
 import {SoundWaves} from './components/SoundWaves';
 import {NavigationBar} from './components/NavigationBar';
 import TiltingLogo from './TiltingLogo';
+import Roadmap from './components/Roadmap'
 
 function App() {
   return (
@@ -29,6 +30,11 @@ function App() {
       <div className="TiltingLogoWrapper TiltingLogoWrapper1">
         <TiltingLogo/> 
       </div>
+
+      <div className="RoadmapWrapper">
+        <Roadmap/>
+      </div>
+
       <div className="TiltingLogoWrapper TiltingLogoWrapper2">
         <TiltingLogo/> 
       </div>
