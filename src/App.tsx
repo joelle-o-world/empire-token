@@ -7,6 +7,7 @@ import {SoundWaves} from './components/SoundWaves';
 import {NavigationBar} from './components/NavigationBar';
 import TiltingLogo from './TiltingLogo';
 import Roadmap from './components/Roadmap'
+import ContactForm from './components/ContactForm';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <NavigationBar/>
       <div className="HeroSoundWavesWrapper">
       {
-        <SoundWaves/>
+        //<SoundWaves/>
       }
       </div>
 
@@ -28,7 +29,9 @@ function App() {
       </div>
 
       <div className="TiltingLogoWrapper TiltingLogoWrapper1">
-        <TiltingLogo/> 
+      {
+        //<TiltingLogo/> 
+      }
       </div>
 
       <div className="RoadmapWrapper">
@@ -36,7 +39,13 @@ function App() {
       </div>
 
       <div className="TiltingLogoWrapper TiltingLogoWrapper2">
-        <TiltingLogo/> 
+      {
+        //<TiltingLogo/> 
+      }
+      </div>
+
+      <div className="FooterContactFormWrapper">
+        <ContactForm/>
       </div>
     </>
   );

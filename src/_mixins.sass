@@ -1,0 +1,44 @@
+
+$contentWidth: 1208px
+
+@mixin MainFont
+  font-family: Rubik, sans-serif
+  font-weight: 200
+
+@mixin EmpireInput
+  background-color: rgba(#386DAC, 0.36)
+  color: white
+  @include MainFont
+  font-size: 21px
+  padding-top: 1em
+  padding-bottom: 1em
+  padding-left: 1.2em
+  padding-right: 1.2em
+  border: none
+  border-radius: 8px
+  outline: none
+  margin: 8px
+  transition: background-color 1s
+  &:focus
+    background-color: lighten(#386DAC, 1%)
+  &::placeholder
+    color: white
+    font-size: 21px
+
+@mixin EmpireLink
+  &, &:link, &:visited
+    display: block
+    padding: 10px
+    color: white
+    font-family: Rubit, sans-serif
+    font-weight: 200
+    cursor: pointer
+    @include EmpireLinkHover
+
+@mixin EmpireLinkHover
+  &:hover
+    background: linear-gradient(45deg, #18E9D9, #4FA4E1, #875FEA)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: rgba(white, .5)
+    cursor: pointer
+    

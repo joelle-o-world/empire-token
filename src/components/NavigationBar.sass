@@ -1,4 +1,4 @@
-$contentWidth: 1208px
+@use "../mixins" as *
 
 .NavigationBar
   position: fixed
@@ -40,14 +40,5 @@ $contentWidth: 1208px
       justify-content: space-between
       align-items: center
       a, :link, :visited
-        display: block
-        padding: 10px
-        color: white
-        font-family: Rubit, sans-serif
-        font-weight: 200
         font-size: 20px
-        cursor: pointer
-        &:hover
-          background: linear-gradient(45deg, #18E9D9, #4FA4E1, #875FEA)
-          -webkit-background-clip: text
-          -webkit-text-fill-color: rgba(white, .5)
+        @include EmpireLink

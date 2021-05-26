@@ -1,0 +1,43 @@
+@use "../mixins" as *
+
+.ContactForm
+  height: 247px
+  display: flex
+  flex-direction: column
+  flex-wrap: wrap
+  align-items: stretch
+  input, button, textarea
+    min-width: 300px
+  .NameInput
+    @include EmpireInput
+    order: 1
+    flex-basis: 70px
+  .EmailInput
+    @include EmpireInput
+    order: 2
+    flex-basis: 70px
+  textarea.MessageInput
+    flex-grow: 1
+    @include EmpireInput
+    font-size: 18px
+    resize: none
+    order: 4
+    flex-basis: 140px
+
+  button
+    order: 5
+    margin: 8px
+    height: 59px
+
+  small
+    order: 3
+    @include MainFont
+    color: #386DAC
+    display: flex
+    justify-content: space-around
+    font-size: 21px
+    flex-basis: 59px
+    align-items: center
+    a
+      @include EmpireLinkHover
+      color: #386DAC
