@@ -25,6 +25,19 @@ $contentWidth: 1208px
     color: white
     font-size: 21px
 
+
+@mixin FancyTextGradient
+  background: linear-gradient(45deg, #18E9D9, #4FA4E1, #875FEA)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: rgba(white, .5)
+@mixin FancyBGGradient
+  background: linear-gradient(45deg, #18E9D9, #4FA4E1, #875FEA)
+
+@mixin RicherTextGradient
+  background: linear-gradient(to left, #18E9D9, #4FA4E1, #875FEA)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+
 @mixin EmpireLink
   &, &:link, &:visited
     display: block
@@ -37,8 +50,36 @@ $contentWidth: 1208px
 
 @mixin EmpireLinkHover
   &:hover
-    background: linear-gradient(45deg, #18E9D9, #4FA4E1, #875FEA)
-    -webkit-background-clip: text
-    -webkit-text-fill-color: rgba(white, .5)
+    @include FancyTextGradient
     cursor: pointer
     
+@mixin BlackButton
+  background-color: black
+  border: 1px solid #66D9E8
+  text-transform: uppercase
+  min-width: 165px
+  min-height: 56px
+  border-radius: 8px
+  color: white
+  @include MainFont
+  font-size: 18px
+  font-weight: 500
+  outline: none
+  &:hover
+    background: linear-gradient(to left, #18E9D9, #4FA4E1, #875FEA)
+    cursor: pointer
+
+@mixin ItalicLink
+  color: #66D9E8
+  font-size: 16px
+  font-weight: 500
+  font-style: italic
+  padding: 3px
+  &:hover
+    @include FancyBGGradient
+    cursor: pointer
+    color: black
+
+// ----- ANIMATIONS
+
+

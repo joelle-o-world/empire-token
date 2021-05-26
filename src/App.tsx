@@ -8,15 +8,14 @@ import {NavigationBar} from './components/NavigationBar';
 import TiltingLogo from './TiltingLogo';
 import Roadmap from './components/Roadmap'
 import ContactForm from './components/ContactForm';
+import HeroBanner from './components/HeroBanner';
 
 function App() {
   return (
     <>
       <NavigationBar/>
-      <div className="HeroSoundWavesWrapper">
-      {
-        //<SoundWaves/>
-      }
+      <div className="HeroBannerWrapper">
+        <HeroBanner/>
       </div>
 
       <div className="HowEmpireCanBeUsedWrapper">
@@ -30,7 +29,7 @@ function App() {
 
       <div className="TiltingLogoWrapper TiltingLogoWrapper1">
       {
-        //<TiltingLogo/> 
+        <TiltingLogo/> 
       }
       </div>
 
@@ -40,7 +39,7 @@ function App() {
 
       <div className="TiltingLogoWrapper TiltingLogoWrapper2">
       {
-        //<TiltingLogo/> 
+        <TiltingLogo/> 
       }
       </div>
 

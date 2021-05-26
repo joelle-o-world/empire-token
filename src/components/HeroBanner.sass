@@ -1,0 +1,38 @@
+@use '../mixins' as *
+.HeroBanner
+  width: 100%
+  min-height: 810px
+  box-sizing: border-box
+  .HeroBannerForeground
+    position: absolute
+    left: calc(50% - 145px)
+  .SoundWaves
+    position: absolute
+    left: 0px
+    width: 100%
+    box-sizing: border-box
+    height: 100%
+
+  .HeroText
+    text-shadow: 0px 0px 50px rgba(0,0,0,0.8)
+    position: absolute
+    top: 180px
+    right: 50%
+    left: calc(50% - 600px)
+    h1, p, .ButtonGroup
+      margin-bottom: 45px
+    p
+      font-size: 22px
+      @include MainFont
+      line-height: 29px
+      color: #E3E3E3
+      .ReadMoreLink
+        @include ItalicLink
+        &:hover::after
+          content: "..."
+      strong
+        font-weight: 500
+    .ButtonGroup
+      button
+        @include BlackButton
+        margin: 10px
