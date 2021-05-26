@@ -1,15 +1,32 @@
-import React, {FunctionComponent} from 'react'
+import React, {FunctionComponent, useCallback, useRef, useState} from 'react'
 
 import './Roadmap.sass'
 import DashSeperator from '../img/DashSeperator.svg'
+import EmpireStateScroller from './EmpireStateScroller';
 
 import RoadmapContent from './RoadmapContent.json'
 const {milestones} = RoadmapContent
 
 
 export const Roadmap: FunctionComponent = () => {
+  const [scrollProgress, setScrollProgress] = useState(.5)
+  const handleScroll = useCallback(e => {
+    setScrollProgress( 
+      e.target.scrollTop / (e.target.scrollHeight-e.target.clientHeight)
+    )
+  }, [])
+
+  const milestoneListRef = useRef(null as null|HTMLDivElement)
+  const handleDragScroll = (y:number) => {
+    let list = milestoneListRef.current
+    if(list) {
+      list.scrollTop = y * (list.scrollHeight-list.clientHeight)
+    }
+  }
+
   return <div className="Roadmap">
-    <div className="MilestonesList">
+    <EmpireStateScroller scrollProgress={scrollProgress} onScroll={handleDragScroll}/>
+    <div className="MilestonesList" onScroll={handleScroll} ref={milestoneListRef}>
       { milestones.map(({date, title}, i) => (
         <Milestone date={new Date(date)} title={title} key={i} floorNumber={milestones.length-i} />
       ))}
