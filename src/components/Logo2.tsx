@@ -24,7 +24,13 @@ export default function Model(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF('models/logo2.glb') as GLTFResult
   return (
     <group ref={group} {...props} dispose={null} scale={0.35}>
-      <mesh geometry={nodes.mesh_0.geometry} material={logoMaterial} position={[-33.25, 18.75, 0]} />
+      <mesh 
+        geometry={nodes.mesh_0.geometry} 
+        material={logoMaterial} 
+        position={[-33.88, 19.06, 0]} 
+        // @ts-ignore
+        ref={e => window.el = e} 
+      />
     </group>
   )
 }

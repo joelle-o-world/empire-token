@@ -1,15 +1,33 @@
-import React, {FunctionComponent, Suspense, useRef} from 'react';
-import {Canvas, useLoader} from '@react-three/fiber'
+import React, {FunctionComponent, Suspense, useEffect, useRef} from 'react';
+import {Canvas, useLoader, useFrame} from '@react-three/fiber'
 
 import {useRelativeMousePosition} from './hooks/useMousePosition'
 
 import Logo from './components/Logo2'
 
-export const TiltingLogo: FunctionComponent = () => {
-  const ref = useRef(null)
-  const {mouseX, mouseY} = useRelativeMousePosition(ref)
 
-  return <div className="TiltingLogo" ref={ref}>
+const quarterPI = Math.PI / 4
+
+export const TiltingLogo: FunctionComponent = () => {
+  const divRef = useRef(null as null|HTMLDivElement)
+  const modelRef = useRef(null as any)
+  useEffect(() => {
+    const handleScroll = () => {
+      let model = modelRef.current
+      const div = divRef.current
+      if(model && div) {
+        let {top, bottom} = div.getBoundingClientRect()
+        let progress = (top+bottom)/2 / window.innerHeight - .5
+        console.log(progress)
+        model.rotation.x = progress * 2
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
+
+  return <div className="TiltingLogo" ref={divRef}>
     <Suspense fallback="something went wrong">
       <Canvas >
         <spotLight 
@@ -22,17 +40,32 @@ export const TiltingLogo: FunctionComponent = () => {
           position={[-2, -2, 2]}
           color="rgb(144,144,246)"
         />
-        <Logo rotation={[
-          mouseY/window.innerHeight, 
-          -mouseX/window.innerWidth * .4, 
-          0
-        ]}/>
+        <SideToSideTilt>
+          <group ref={modelRef}>
+            <Logo/>
+          </group>
+        </SideToSideTilt>
       </Canvas>
     </Suspense>
   </div>
 }
 
 export default TiltingLogo;
+
+
+let model
+export const SideToSideTilt: FunctionComponent = ({children}) => {
+  const ref = useRef(null as any)
+  useFrame((state) => {
+    model = ref.current
+    if(model)
+      model.rotation.y = quarterPI * Math.sin(Date.now() / 2000)
+  });
+  return <group ref={ref}>
+    {children}
+  </group>
+}
+
 
 //export const LogoModel:FunctionComponent = () => {
   ////const obj = useLoader(OBJLoader, "/models/3dLogo.obj")

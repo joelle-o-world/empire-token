@@ -26,8 +26,11 @@ function App() {
         <Countdown />
       </div>
 
-      <div className="TiltingLogoWrapper">
-        { <TiltingLogo/> }
+      <div className="TiltingLogoWrapper TiltingLogoWrapper1">
+        <TiltingLogo/> 
+      </div>
+      <div className="TiltingLogoWrapper TiltingLogoWrapper2">
+        <TiltingLogo/> 
       </div>
     </>
   );
