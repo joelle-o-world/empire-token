@@ -5,6 +5,7 @@ import './HeroBanner.sass'
 import {SoundWaves} from './SoundWaves';
 
 import KeepClimbingHeader from '../img/KeepClimbingHeader.png';
+import {ClipboardButton} from './ClipboardButton';
 
 export const HeroBanner: FunctionComponent = () => {
   return <div className="HeroBanner">
@@ -21,7 +22,7 @@ export const HeroBanner: FunctionComponent = () => {
 
       <div className="TokenAddress">
         <h3>TOKEN ADDRESS:</h3>
-        
+        <ClipboardButton toCopy="0xe9aa9c5ee1b82fc15eCaF0487DB26DBb205bDe6e" name="0xe9aa9c5ee1b82fc15eCaF0487DB26DBb205bDe6e"/>
       </div>
     </div>
   </div>

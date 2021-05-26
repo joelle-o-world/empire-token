@@ -1,0 +1,25 @@
+@use '../mixins' as *
+
+.ClipboardButton
+  height: 55px
+  background-color: #041426
+  box-shadow: inset 0px 0px 25px lighten(rgb(37,44,78), 15%)
+  border-radius: 8px
+  box-sizing: border-box
+  padding: 11px
+  display: flex
+  &:hover:not(.work-in-progress)
+  input.address
+    flex-grow: 1
+    background: none
+    border: none
+    color: white
+    text-align: center
+    font-size: 17px
+    outline: none
+    @include MainFont
+  .node-name
+  button
+    height: auto
+    flex-basis: 123px
+    min-width: auto
