@@ -47,6 +47,7 @@ $contentWidth: 1208px
     font-weight: 200
     cursor: pointer
     @include EmpireLinkHover
+    text-decoration: none
 
 @mixin EmpireLinkHover
   &:hover
@@ -70,15 +71,17 @@ $contentWidth: 1208px
     cursor: pointer
 
 @mixin ItalicLink
-  color: #66D9E8
-  font-size: 16px
-  font-weight: 500
-  font-style: italic
-  padding: 3px
-  &:hover
-    @include FancyBGGradient
-    cursor: pointer
-    color: black
+  &, &:link, &:visited
+    color: #66D9E8
+    font-size: 16px
+    font-weight: 500
+    font-style: italic
+    padding: 3px
+    text-decoration: none
+    &:hover
+      @include FancyBGGradient
+      cursor: pointer
+      color: black
 
 // ----- ANIMATIONS
 
