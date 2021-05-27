@@ -57,17 +57,17 @@ export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
     }
   }
 
-  //const scrollTimerRef = useRef(null as null|ReturnType<typeof setTimeout>)
-  //const handleScroll = (e:any) => {
-    //if(scrollTimerRef.current !== null)
-      //clearTimeout(scrollTimerRef.current);
-    //scrollTimerRef.current = setTimeout(() => {
-      //handleDoneScrolling(e)
-    //}, 50)
-  //}
+  const scrollTimerRef = useRef(null as null|ReturnType<typeof setTimeout>)
+  const handleScroll = (e:any) => {
+    if(scrollTimerRef.current !== null)
+      clearTimeout(scrollTimerRef.current);
+    scrollTimerRef.current = setTimeout(() => {
+      handleDoneScrolling(e)
+    }, 50)
+  }
 
   return <div className="CardCarousel" >
-    <ul className="CardCarouselSlides" onScroll={handleDoneScrolling} ref={slidesRef}>
+    <ul className="CardCarouselSlides" onScroll={handleScroll} ref={slidesRef}>
     {
       React.Children.map(children, (child, i) => {
         if(React.isValidElement(child)) {
