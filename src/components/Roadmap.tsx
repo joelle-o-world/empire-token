@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useCallback, useRef, useState} from 'react'
+import React, {FunctionComponent, useCallback, useMemo, useRef, useState} from 'react'
 
 import './Roadmap.sass'
 import DashSeperator from '../img/DashSeperator.svg'
@@ -9,7 +9,8 @@ const {milestones} = RoadmapContent
 
 
 export const Roadmap: FunctionComponent = () => {
-  const [scrollProgress, setScrollProgress] = useState(.5)
+  console.log('re-rendering roadmap')
+  const [scrollProgress, setScrollProgress] = useState(0)
   const handleScroll = useCallback(e => {
     setScrollProgress( 
       e.target.scrollTop / (e.target.scrollHeight-e.target.clientHeight)
@@ -20,16 +21,21 @@ export const Roadmap: FunctionComponent = () => {
   const handleDragScroll = (y:number) => {
     let list = milestoneListRef.current
     if(list) {
-      list.scrollTop = y * (list.scrollHeight-list.clientHeight)
+      //list.scrollTop = y * (list.scrollHeight-list.clientHeight)
+      list.scrollTo({left:0, top: y * (list.scrollHeight - list.clientHeight)})
     }
   }
+  const MilestonesListItems = useMemo(() => {
+    console.log('re formatting');
+    return milestones.map(({date, title}, i) => (
+      <Milestone date={new Date(date)} title={title} key={i} floorNumber={milestones.length-i} />
+    )
+  )} , [])
 
   return <div className="Roadmap">
     <EmpireStateScroller scrollProgress={scrollProgress} onScroll={handleDragScroll}/>
     <div className="MilestonesList" onScroll={handleScroll} ref={milestoneListRef}>
-      { milestones.map(({date, title}, i) => (
-        <Milestone date={new Date(date)} title={title} key={i} floorNumber={milestones.length-i} />
-      ))}
+      {MilestonesListItems}
     </div>
   </div>
 }
@@ -62,3 +68,5 @@ export const Milestone: FunctionComponent<MilestoneProps> = ({floorNumber, date,
     </div>
   </div>
 }
+
+
