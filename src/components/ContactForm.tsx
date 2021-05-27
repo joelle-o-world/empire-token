@@ -9,7 +9,7 @@ export const ContactForm: FunctionComponent = () => {
     <input className="EmailInput" type="email" placeholder="Your Email Address" />
     <textarea placeholder="Message" className="MessageInput" />
     <small>
-      <a>Terms</a> | <a>Conditions</a>
+      <a href="Terms link">Terms</a> | <a href="Conditions link">Conditions</a>
     </small>
     <PurpleFancyButton>SUBMIT</PurpleFancyButton>
   </div>

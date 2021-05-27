@@ -10,10 +10,10 @@ import {ClipboardButton} from './ClipboardButton';
 export const HeroBanner: FunctionComponent = () => {
   return <div className="HeroBanner">
     <SoundWaves/>
-    <img src={HeroBannerForeground} className="HeroBannerForeground"/>
+    <img src={HeroBannerForeground} className="HeroBannerForeground" alt="CGI empire state building"/>
     <div className="HeroText">
-    <h1><img src={KeepClimbingHeader}/></h1>
-      <p>While everyone is going to the moon. We are inviting the astronauts into our world, we will take them to a very memorable journey, taking the stairs up the empire state building. <a className="ReadMoreLink">Read More</a></p>
+    <h1><img src={KeepClimbingHeader} alt="Keep Climbing"/></h1>
+      <p>While everyone is going to the moon. We are inviting the astronauts into our world, we will take them to a very memorable journey, taking the stairs up the empire state building. <a href="read more link" className="ReadMoreLink">Read More</a></p>
       <div className="ButtonGroup">
         <button>BSCSCAN</button>
         <button>PRICE CHART</button>

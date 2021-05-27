@@ -3,7 +3,6 @@ import React from 'react';
 import './home.sass';
 import HowEmpireCanBeUsed from './components/HowEmpireCanBeUsed';
 import Countdown from './components/Countdown';
-import {SoundWaves} from './components/SoundWaves';
 import {NavigationBar} from './components/NavigationBar';
 import TiltingLogo from './TiltingLogo';
 import Roadmap from './components/Roadmap'

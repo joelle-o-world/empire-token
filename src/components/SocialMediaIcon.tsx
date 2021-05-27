@@ -5,10 +5,11 @@ import './SocialMediaIcon.sass'
 export interface SocialMediaIconProps {
   url?: string; 
   img: string;
+  alt: string;
 }
 
-export const SocialMediaIcon: FunctionComponent<SocialMediaIconProps> = ({img, url}) => {
+export const SocialMediaIcon: FunctionComponent<SocialMediaIconProps> = ({img, url, alt}) => {
   return <a href={url} className="SocialMediaIcon">
-    <img src={img} />
+    <img src={img} alt={alt} />
   </a>
 }

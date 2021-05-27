@@ -1,7 +1,6 @@
 import React, {FunctionComponent, Suspense, useEffect, useRef} from 'react';
-import {Canvas, useLoader, useFrame} from '@react-three/fiber'
+import {Canvas, useFrame} from '@react-three/fiber'
 
-import {useRelativeMousePosition} from './hooks/useMousePosition'
 
 import Logo from './components/Logo2'
 
@@ -18,7 +17,6 @@ export const TiltingLogo: FunctionComponent = () => {
       if(model && div) {
         let {top, bottom} = div.getBoundingClientRect()
         let progress = (top+bottom)/2 / window.innerHeight - .5
-        console.log(progress)
         model.rotation.x = progress * 2
       }
     }

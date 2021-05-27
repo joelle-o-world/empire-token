@@ -16,25 +16,25 @@ import TelegramIcon from '../img/Telegram.svg';
 
 export const NavigationBar: FunctionComponent = () => {
   return <div className="NavigationBar">
-    <img className="SiteLogo" src={SideTextLogo} />
+    <img className="SiteLogo" src={SideTextLogo} alt="Empire Token" />
     <div className="NavigationBarMenu">
       <div className="TopRow">
         <nav className="SocialMedia">
-          <SocialMediaIcon img={TwitterIcon} />
-          <SocialMediaIcon img={RedditIcon} />
-          <SocialMediaIcon img={InstagramIcon} />
-          <SocialMediaIcon img={GithubIcon} />
-          <SocialMediaIcon img={LinkedinIcon} />
-          <SocialMediaIcon img={YoutubeIcon} />
-          <SocialMediaIcon img={TelegramIcon} />
+          <SocialMediaIcon img={TwitterIcon} alt="Twitter" />
+          <SocialMediaIcon img={RedditIcon} alt="Reddit" />
+          <SocialMediaIcon img={InstagramIcon} alt="Instagram" />
+          <SocialMediaIcon img={GithubIcon} alt="Github" />
+          <SocialMediaIcon img={LinkedinIcon} alt="LinkedIn" />
+          <SocialMediaIcon img={YoutubeIcon} alt="YouTube" />
+          <SocialMediaIcon img={TelegramIcon} alt="Telegram" />
         </nav>
         <PurpleFancyButton>BUY EMPIRE NOW!</PurpleFancyButton>
       </div>
       <nav className="BottomRow SiteLinks">
-        <a>Home</a>
-        <a>Audit</a>
-        <a>Price Chart</a>
-        <a>Renounce Of Ownership</a>
+        <a href="link1">Home</a>
+        <a href="link2">Audit</a>
+        <a href="link3">Price Chart</a>
+        <a href="link4">Renounce Of Ownership</a>
       </nav>
     </div>
   </div>

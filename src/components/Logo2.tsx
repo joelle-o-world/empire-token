@@ -21,7 +21,7 @@ const logoMaterial = new THREE.MeshPhongMaterial({
 
 export default function Model(props: JSX.IntrinsicElements['group']) {
   const group = useRef<THREE.Group>()
-  const { nodes, materials } = useGLTF('models/logo2.glb') as GLTFResult
+  const { nodes,  } = useGLTF('models/logo2.glb') as GLTFResult
   return (
     <group ref={group} {...props} dispose={null} scale={0.35}>
       <mesh 

@@ -50,7 +50,7 @@ const formatDate = (date: Date) => `${
 export const Milestone: FunctionComponent<MilestoneProps> = ({floorNumber, date, title}) => {
   return <div className="Milestone">
     <div className="MilestoneNumber">{floorNumber}</div>
-    <img src={DashSeperator} className="DashSeperator" />
+    <img src={DashSeperator} className="DashSeperator" alt="-"/>
     <div className="SkyScaperWindows">
       <div className="SkyScraperWindow"/>
       <div className="SkyScraperWindow"/>

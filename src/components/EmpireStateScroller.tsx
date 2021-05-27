@@ -32,13 +32,13 @@ export const EmpireStateScroller: FunctionComponent<EmpireStateScrollerProps> = 
   }
 
   return <div className="EmpireStateScroller" ref={divRef} >
-    <img src={EmpireStateFlatMesh} className="ScrollerBackground"onMouseMove={handleMouseMove} onMouseDown={handleMouseMove}/>
+    <img src={EmpireStateFlatMesh} alt="CGI Empire State Building" className="ScrollerBackground"onMouseMove={handleMouseMove} onMouseDown={handleMouseMove}/>
     <button 
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       className="DragHandle"
       style={{top: top+'px'}}
-    ><img src={SmallLogo}/> YOU ARE HERE</button>
+    ><img src={SmallLogo} alt="" /> YOU ARE HERE</button>
   </div>
 }
 export default EmpireStateScroller
