@@ -1,6 +1,7 @@
 import React, {FunctionComponent} from 'react'
 
 import './NavigationBar.sass';
+import {IoMdClose, IoMdMenu} from 'react-icons/io'
 
 import {SocialMediaIcon} from './SocialMediaIcon';
 import PurpleFancyButton from './PurpleFancyButton';
@@ -17,7 +18,9 @@ import TelegramIcon from '../img/Telegram.svg';
 export const NavigationBar: FunctionComponent = () => {
   return <div className="NavigationBar">
     <img className="SiteLogo" src={SideTextLogo} alt="Empire Token" />
+    <button className="OpenBurgerMenuButton"><IoMdMenu/></button>
     <div className="NavigationBarMenu">
+      <button className="CloseBurgerMenuButton"><IoMdClose/></button>
       <div className="TopRow">
         <nav className="SocialMedia">
           <SocialMediaIcon img={TwitterIcon} alt="Twitter" />

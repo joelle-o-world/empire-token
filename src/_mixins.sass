@@ -1,6 +1,18 @@
 
 $contentWidth: 1208px
 
+@mixin MobileView
+  @media screen and (max-width: 767px)
+    @content
+
+@mixin TabletView
+  @media screen and (min-width: 768px) and (max-width: 1279px)
+    @content
+
+@mixin DesktopView
+  @media screen and (min-width: 1280px)
+    @content
+
 @mixin MainFont
   font-family: Rubik, sans-serif
   font-weight: 200
