@@ -5,19 +5,22 @@ import quickCompileProgram from '../gl/quickCompileProgram';
 const SoundWavesVShader = `
 precision mediump float;
 
-uniform float phase;
+uniform vec4 wavesIntensity;
 
-float y1, y2;
-
-attribute vec2 position;
+attribute float position;
+attribute vec4 waves;
 void main() {
-  y1 = -sin(-position.x + 0.1 +phase);
-  y2 = abs(0.5 - position.x) * sin(position.x * 7.0 + 0.5 * position.y - phase * 3.0);
-  y1 = y1 * y1;
-  y2 = y2 * y2;
+  float x = position;
+  float y = (
+    waves[0] * wavesIntensity[0] 
+    + waves[1] * wavesIntensity[1] 
+    + waves[2] * wavesIntensity[2] 
+    + waves[3] * wavesIntensity[3] 
+  ) - 1.0;
+   
   gl_Position = vec4(
-    position.x, 
-    (position.y * y2 + (1.0-position.y) * y1) - 1.0,
+    x,
+    y,
     0.5, 
     1.0
   );
@@ -32,6 +35,8 @@ void main() {
 }
 `
 
+const PHI = 2 * Math.PI
+const sq = (x:number) => x*x
 /**
   Sets up rendering of sine waves on a canvas using WebGL.
   Be sure to handle exceptions when calling this function.
@@ -46,18 +51,32 @@ export function startSoundWaves(canvas: HTMLCanvasElement):void {
   );
   gl.useProgram(program);
 
-  const {vertexData, numberOfVertices, elementsPerVertex} = makeGridBuffer({
+  const randomSineFunction = () => {
+    let frequency = 2*Math.random() * PHI
+    let phase = Math.random() * PHI    
+    return (x:number) => sq(Math.sin(frequency * (x-phase))) 
+  }
+
+  const {vertexData, numberOfVertices, elementsPerVertex} = makeWaveVertices({
     width: 2,
     xShift: -1,
+    waveFunctions: [
+      randomSineFunction(),
+      randomSineFunction(),
+      randomSineFunction(),
+      randomSineFunction(),
+    ],
   });
   const bufferObject = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, bufferObject);
   gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);
 
+  console.log(vertexData);
+
   const positionAttribLocation = gl.getAttribLocation(program, 'position');
   gl.vertexAttribPointer(
     positionAttribLocation, // location
-    2, // number of elements
+    1, // number of elements
     gl.FLOAT, // element type
     false, // Normalised
     elementsPerVertex * Float32Array.BYTES_PER_ELEMENT, // stride
@@ -65,13 +84,40 @@ export function startSoundWaves(canvas: HTMLCanvasElement):void {
   )
   gl.enableVertexAttribArray(positionAttribLocation);
 
+  const wavesAttribLocation = gl.getAttribLocation(program, 'waves');
+  gl.vertexAttribPointer(
+    wavesAttribLocation, // location
+    elementsPerVertex-1 , // number of elements
+    gl.FLOAT, // element types
+    false, // normalised
+    elementsPerVertex * Float32Array.BYTES_PER_ELEMENT, // stride
+    1 * Float32Array.BYTES_PER_ELEMENT
+  )
+  gl.enableVertexAttribArray(wavesAttribLocation)
+
   // Expose uniforms
-  const phaseUniform = gl.getUniformLocation(program, 'phase');
-  let phase = 0
+  //const phaseUniform = gl.getUniformLocation(program, 'phase');
+  //let phase = 0
+
+  // Wave intensity uniforms
+  const wavesIntensity = [0, 0, 0, 0]
+  const wavesIntensityUniform = gl.getUniformLocation(program, 'wavesIntensity');
+  gl.uniform4fv(wavesIntensityUniform, wavesIntensity)
+  let intensityFrequencys = [
+    Math.random(),
+    Math.random(),
+    Math.random(),
+    Math.random(),
+  ]
 
   const loop = () => {
-    phase += 0.01
-    gl.uniform1f(phaseUniform, phase)
+    //phase += 0.01
+    //gl.uniform1f(phaseUniform, phase)
+    const t = Date.now()
+    for(let i=0; i < wavesIntensity.length; ++i) {
+      wavesIntensity[i] = sq(Math.sin(t/200 * intensityFrequencys[i]))
+    }
+    gl.uniform4fv(wavesIntensityUniform, wavesIntensity)
 
     gl.clearColor(0,0,0,0);
     gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT);
@@ -84,37 +130,37 @@ export function startSoundWaves(canvas: HTMLCanvasElement):void {
 }
 
 
-function makeGridBuffer({
-  rows=50,
-  cols=50,
-  xShift=0, yShift=0,
-  width=1,
-  height=1,
-  elementsPerVertex=2,
-}={}) {
-  const size = elementsPerVertex * rows * cols
-  const buffer = new Float32Array(size);
-  for(let row=0; row < rows; ++row)
-    for(let col=0; col < cols; ++col) {
-      buffer[ 
-        elementsPerVertex * (col * rows + row) 
-      ] = width * row / (rows-1) + xShift 
-      buffer[ 
-        elementsPerVertex * (col * rows + row)+1 
-      ] = height * col / (cols-1) + yShift 
-    }
+//function makeGridBuffer({
+  //rows=50,
+  //cols=50,
+  //xShift=0, yShift=0,
+  //width=1,
+  //height=1,
+  //elementsPerVertex=2,
+//}={}) {
+  //const size = elementsPerVertex * rows * cols
+  //const buffer = new Float32Array(size);
+  //for(let row=0; row < rows; ++row)
+    //for(let col=0; col < cols; ++col) {
+      //buffer[ 
+        //elementsPerVertex * (col * rows + row) 
+      //] = width * row / (rows-1) + xShift 
+      //buffer[ 
+        //elementsPerVertex * (col * rows + row)+1 
+      //] = height * col / (cols-1) + yShift 
+    //}
 
-  return {
-    vertexData: buffer,
-    numberOfVertices: rows*cols,
-    elementsPerVertex,
+  //return {
+    //vertexData: buffer,
+    //numberOfVertices: rows*cols,
+    //elementsPerVertex,
 
-  };
-}
+  //};
+//}
 
 function makeWaveVertices({
-  rows=50,
-  cols=50,
+  rows=20,
+  cols=100,
   width=1,
   xShift=0,
   waveFunctions = [] as ((x:number) => number)[]
@@ -129,16 +175,18 @@ function makeWaveVertices({
     for(let d=0; d < cols; ++d) {
       let col = (row % 2 === 0) ? d : cols - d - 1;
       let x = colWidth * col + xShift
-      let vertexIndex = elementsPerVertex * (col * rows + row)
+      let vertexIndex = elementsPerVertex * (row * cols + d)
       buffer[vertexIndex] = x
       for(let i=0; i < waveFunctions.length; ++ i) {
         let y = waveFunctions[i](x)
-        buffer[vertexIndex + 1 + i] = y
+        y *= Math.abs(i / waveFunctions.length - row/rows) *  2
+        y *= (1.3 - Math.abs(x))
+        buffer[vertexIndex + 1 + i] = y  * row/rows
       }
     }
   }
 
-  console.log("sound waves memory:", buffer.length * 4, "bytes")
+  console.log("sound waves memory:", buffer.length * Float32Array.BYTES_PER_ELEMENT, "bytes")
 
   return { 
     vertexData: buffer,
