@@ -19,7 +19,7 @@ void main() {
   ) - 1.0;
    
   gl_Position = vec4(
-    x,
+    x + sin(y*10.0) * .005,
     y,
     0.5, 
     1.0
@@ -31,7 +31,7 @@ const SoundWavesFShader = `
 precision mediump float;
 
 void main() {
-  gl_FragColor = vec4(.27, .29, .31, 1.0);
+  gl_FragColor = vec4(.27, .29, .31, 0.5);
 }
 `
 
@@ -104,18 +104,18 @@ export function startSoundWaves(canvas: HTMLCanvasElement):void {
   const wavesIntensityUniform = gl.getUniformLocation(program, 'wavesIntensity');
   gl.uniform4fv(wavesIntensityUniform, wavesIntensity)
   let intensityFrequencys = [
-    Math.random(),
-    Math.random(),
-    Math.random(),
-    Math.random(),
-  ]
+    .7 + .3*Math.random(),
+    .5 + .5*Math.random(),
+    .3 + .7*Math.random(),
+    .1 + .9*Math.random(),
+  ].map(f => f * .002)
 
   const loop = () => {
     //phase += 0.01
     //gl.uniform1f(phaseUniform, phase)
     const t = Date.now()
     for(let i=0; i < wavesIntensity.length; ++i) {
-      wavesIntensity[i] = sq(Math.sin(t/200 * intensityFrequencys[i]))
+      wavesIntensity[i] = sq(Math.sin(t * intensityFrequencys[i]))
     }
     gl.uniform4fv(wavesIntensityUniform, wavesIntensity)
 
@@ -180,8 +180,10 @@ function makeWaveVertices({
       for(let i=0; i < waveFunctions.length; ++ i) {
         let y = waveFunctions[i](x)
         y *= Math.abs(i / waveFunctions.length - row/rows) *  2
-        y *= (1.3 - Math.abs(x))
-        buffer[vertexIndex + 1 + i] = y  * row/rows
+        y *= (1.5 - Math.abs(x))/1.5
+        y *= (1+row/rows)/2
+        y *= .7
+        buffer[vertexIndex + 1 + i] = y 
       }
     }
   }

@@ -2,17 +2,23 @@
   position: relative
   width: 220px
   height: 800px
+  max-height: calc(100vh - 130px)
+  border: 1px solid red
+  box-sizing: border-box
   img.ScrollerBackground
     position: absolute
-    left: 0px
     top: 0px
+    height: calc(100% + 120px)
     box-sizing: border-box
     object-fit: contain
     overflow: hidden
-    margin: -60px
+    //margin: -60px
+    margin-top: -60px
+    left: 0px
+    right: 0px
+
   button.DragHandle
     position: absolute
-    left: 3px
     width: 100%
     height: 59px
     background-color: #051427
