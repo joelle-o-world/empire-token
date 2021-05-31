@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 
 import HeroBannerForeground from '../img/HeroBanner.png';
 import './HeroBanner.sass'
-//import {SoundWaves} from './SoundWaves';
+import {SoundWaves} from './SoundWaves';
 //import ExplainerVideo from './ExplainerVideo'
 
 import KeepClimbingHeader from '../img/KeepClimbingHeader.png';
@@ -11,7 +11,7 @@ import {ClipboardButton} from './ClipboardButton';
 export const HeroBanner: FunctionComponent = () => {
   return <div className="HeroBanner">
   {
-    //<SoundWaves/>
+    <SoundWaves/>
   }
     <img src={HeroBannerForeground} className="HeroBannerForeground" alt="CGI empire state building"/>
     {

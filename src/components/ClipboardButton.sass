@@ -8,6 +8,12 @@
   box-sizing: border-box
   padding: 11px
   display: flex
+  @include MobileView
+    flex-direction: column
+    padding: 20px
+    input.address
+      font-size: 13px
+      margin-bottom: 10px
   &:hover:not(.work-in-progress)
   input.address
     flex-grow: 1
@@ -15,7 +21,8 @@
     border: none
     color: white
     text-align: center
-    font-size: 17px
+    @include DesktopView
+      font-size: 17px
     outline: none
     @include MainFont
   .node-name

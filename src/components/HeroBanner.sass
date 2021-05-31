@@ -1,25 +1,16 @@
 @use '../mixins' as *
 
 .HeroBanner
-  width: 100%
-  min-height: 810px
-  box-sizing: border-box
-  .HeroBannerForeground
-    position: absolute
-    left: calc(50% - 145px)
   .SoundWaves
     position: absolute
     left: 0px
     width: 100%
     box-sizing: border-box
     height: 630px
-
   .HeroText
     text-shadow: 0px 0px 50px rgba(0,0,0,0.8)
-    position: absolute
-    top: 180px
-    right: 50%
-    left: calc(50% - 600px)
+    h1>img
+      max-width: 100%
     h1, p, .ButtonGroup
       margin-bottom: 45px
     p
@@ -37,7 +28,6 @@
       button
         @include BlackButton
         margin: 10px
-
     .TokenAddress
       h3
         @include MainFont
@@ -46,11 +36,41 @@
         margin-bottom: 8px
         font-size: 15px
 
-  .ExplainerVideo
-    .PlayButtonWrapper
+
+  @include DesktopView
+    width: 100%
+    min-height: 810px
+    box-sizing: border-box
+    .HeroBannerForeground
       position: absolute
-      top: 350px
-      left: calc(50% + 362px)
-    .LightsOutOverlay video
-      max-width: 100%
+      left: calc(50% - 145px)
+
+    .HeroText
+      position: absolute
+      top: 180px
+      right: 50%
+      left: calc(50% - 600px)
+
+    .ExplainerVideo
+      .PlayButtonWrapper
+        position: absolute
+        top: 350px
+        left: calc(50% + 362px)
+      .LightsOutOverlay video
+        max-width: 100%
+  @include MobileAndTabletView
+    display: flex
+    flex-direction: column
+    margin-top: 100px
+    padding: 15px
+    box-sizing: border-box
+    width: 100%
+    .SoundWaves
+      top: -150px
+    
+    .HeroText .ButtonGroup
+      display: flex
+      @include MobileView
+        flex-direction: column
+      align-items: center
 
