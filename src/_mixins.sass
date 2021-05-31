@@ -76,19 +76,22 @@ $contentWidth: 1208px
 @mixin EmpireLinkHover
   &:hover
     @include FancyTextGradient
+    text-shadow: 0px 0px 20px #18E9D9
     cursor: pointer
     
-@mixin BlackButton
+@mixin BlackBox
+  @include MainFont
   background-color: black
   border: 1px solid #66D9E8
+  color: white
+  font-size: 18px
+  font-weight: 500
+  border-radius: 8px
+@mixin BlackButton
+  @include BlackBox
   text-transform: uppercase
   min-width: 165px
   min-height: 56px
-  border-radius: 8px
-  color: white
-  @include MainFont
-  font-size: 18px
-  font-weight: 500
   outline: none
   &:hover
     background: linear-gradient(to left, #18E9D9, #4FA4E1, #875FEA)
@@ -107,6 +110,34 @@ $contentWidth: 1208px
       cursor: pointer
       color: black
 
+@mixin LinklikeButton
+  background: none
+  background-color: transparent
+  border: none
+  outline: none
+
+@mixin FriendlyWhiteButton
+  @include LinklikeButton
+  color: white
+  border-radius: 50%
+  display: flex
+  justify-content: center
+  align-items: center
+  &:hover
+    background-color: white
+    color: black
+    @include Twitch
+    
+
 // ----- ANIMATIONS
 
+@mixin Twitch
+  animation: twitch .2s
 
+@keyframes twitch
+  0%
+    transform: scale(0.95)
+  50%
+    transform: scale(1.1)
+  100%
+    transform: scale(1)

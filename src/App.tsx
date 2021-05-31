@@ -14,7 +14,9 @@ function App() {
     <>
       <NavigationBar/>
       <div className="HeroBannerWrapper">
+      {
         <HeroBanner/>
+      }
       </div>
 
       <div className="HowEmpireCanBeUsedWrapper">
@@ -39,7 +41,9 @@ function App() {
       <div className="TiltingLogoWrapper TiltingLogoWrapper2">
       {
         <TiltingLogo/> 
+
       }
+        cakes!
       </div>
 
       <div className="FooterContactFormWrapper">

@@ -1,4 +1,5 @@
-import React, {FunctionComponent} from 'react'
+import React, {FunctionComponent, useEffect, useState} from 'react'
+import classNames from 'classnames';
 
 import './NavigationBar.sass';
 import {IoMdClose, IoMdMenu} from 'react-icons/io'
@@ -16,11 +17,29 @@ import YoutubeIcon from '../img/Youtube.svg';
 import TelegramIcon from '../img/Telegram.svg';
 
 export const NavigationBar: FunctionComponent = () => {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const toggleMenu = () => setMenuOpen(val => !val)
+  const openMenu = () => setMenuOpen(true)
+  const closeMenu = () => setMenuOpen(false)
+
+  useEffect(() => {
+    if(menuOpen) {
+      window.addEventListener('scroll', closeMenu)
+      return () => window.removeEventListener('scroll', closeMenu)
+    }
+  }, [menuOpen])
+
   return <div className="NavigationBar">
+
     <img className="SiteLogo" src={SideTextLogo} alt="Empire Token" />
-    <button className="OpenBurgerMenuButton"><IoMdMenu/></button>
-    <div className="NavigationBarMenu">
-      <button className="CloseBurgerMenuButton"><IoMdClose/></button>
+
+    <button className="OpenBurgerMenuButton" onClick={toggleMenu}><IoMdMenu/></button>
+
+    <div className={classNames(
+      "NavigationBarMenu", 
+      menuOpen ? "BurgerMenuOpen" : "BurgerMenuClosed"
+    )}>
+      <button className="CloseBurgerMenuButton" onClick={closeMenu}><IoMdClose/></button>
       <div className="TopRow">
         <nav className="SocialMedia">
           <SocialMediaIcon img={TwitterIcon} alt="Twitter" />
