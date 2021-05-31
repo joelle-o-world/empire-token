@@ -57,11 +57,13 @@ export const Milestone: FunctionComponent<MilestoneProps> = ({floorNumber, date,
   return <div className="Milestone">
     <div className="MilestoneNumber">{floorNumber}</div>
     <img src={DashSeperator} className="DashSeperator" alt="-"/>
-    <div className="SkyScaperWindows">
-      <div className="SkyScraperWindow"/>
-      <div className="SkyScraperWindow"/>
-      <div className="SkyScraperWindow"/>
-    </div>
+    {
+      //<div className="SkyScaperWindows">
+      //<div className="SkyScraperWindow"/>
+      //<div className="SkyScraperWindow"/>
+      //<div className="SkyScraperWindow"/>
+      //</div>
+    }
     <div className="MilestoneInfoBox">
       <h4 className="MilestoneDate">{formatDate(date)}</h4>
       <h3 className="MilestoneTitle">{title}</h3>
