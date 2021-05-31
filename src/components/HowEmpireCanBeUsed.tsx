@@ -7,7 +7,7 @@ import NFTsIcon from '../img/NftIcon.png';
 import PodcastIcon from '../img/PodcastIcon.png';
 
 export const HowEmpireCanBeUsed: FunctionComponent = () => {
-  return <CardCarousel>
+  return <CardCarousel noScroll focussedCard={1}>
     <Card>
       <img src={EventsIcon} alt="" />
       <h2>Events</h2>
@@ -22,12 +22,6 @@ export const HowEmpireCanBeUsed: FunctionComponent = () => {
       <img src={PodcastIcon} alt="" />
       <h2>Podcast</h2>
       <p>Launch of our podcast app where users can tip podcasters using the Empire token. It would be good to add some more text here so it balances out with the other text boxes. That would be great. </p>
-    </Card>
-    <Card>
-      placeholder
-    </Card>
-    <Card>
-      placeholder
     </Card>
   </CardCarousel>
 }

@@ -8,13 +8,22 @@ const standardWidth = 343
 const expandedWidth = 397
 
 export interface CardCarouselProps {
+  /**
+   * Enable to turn off scrolling and radio buttons.
+   */
+  noScroll?: boolean;
+  focussedCard?: number;
 }
 
 export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
-  children
+  children,
+  noScroll=false,
+  focussedCard,
 }) => {
   const numberOfPages = React.Children.count(children);
-  const [focussedCardIndex, setFocussedCardIndex] = useState(0)
+  let [focussedCardIndex, setFocussedCardIndex] = useState(0)
+  if(focussedCard !== undefined) // Weird hack, sorry.
+    focussedCardIndex = focussedCard
 
   const slidesRef = useRef(null as null|HTMLUListElement)
   const focusCard = (i: number) => {
@@ -69,7 +78,7 @@ export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
 
 
 
-  return <div className="CardCarousel" >
+  return <div className={classNames("CardCarousel", {noScroll})} >
     <ul className="CardCarouselSlides" onScroll={handleScroll} ref={slidesRef}>
     {
       React.Children.map(children, (child, i) => {
@@ -87,11 +96,15 @@ export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
       })
     }
     </ul>
-    <LittleButtons 
-      numberOfButtons={numberOfPages}
-      current={focussedCardIndex}
-      onClick={i => focusCard(i)}
-    />
+    {
+      !noScroll
+       ? <LittleButtons 
+          numberOfButtons={numberOfPages}
+          current={focussedCardIndex}
+          onClick={i => focusCard(i)}
+         />
+      : null 
+    }
   </div>
 }
 

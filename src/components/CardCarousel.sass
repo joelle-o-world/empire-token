@@ -1,3 +1,5 @@
+@use '../mixins' as *
+
 @mixin HideScrollbars
   &::-webkit-scrollbar 
     display: none
@@ -15,6 +17,14 @@ $expandedHeight: 493px
   height: 100%
   display: flex
   flex-direction: column
+  &:not(.noScroll) .CardCarouselSlides
+    overflow-x: auto
+  &.noScroll .CardCarouselSlides
+    justify-content: center
+    .CardCarouselCard:not(.InFocus)
+      opacity: 0.6
+    @include MobileAndTabletView
+      flex-direction: column
   .CardCarouselSlides
     @include HideScrollbars
     box-sizing: border-box
@@ -22,7 +32,6 @@ $expandedHeight: 493px
     flex-direction: row
     align-items: center
     flex-grow: 1
-    overflow-x: auto
     &::before, &::after
       content: "(spacer)"
       visibility: hidden

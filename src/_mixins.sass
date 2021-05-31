@@ -9,6 +9,12 @@ $contentWidth: 1208px
   @media screen and (min-width: 768px) and (max-width: 1279px)
     @content
 
+@mixin MobileAndTabletView
+  @include MobileView
+    @content
+  @include TabletView
+    @content
+
 @mixin DesktopView
   @media screen and (min-width: 1280px)
     @content

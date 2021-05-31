@@ -31,7 +31,6 @@ export const ExplainerVideo: FunctionComponent = () => {
   return <div className="ExplainerVideo">
 
     <LightsOutOverlay active={showingVideo}>
-      <button className="closeButton"><IoMdCloseCircle/></button>
       <video ref={videoRef} src={ExplainerVideoFile} onEnded={hideVideo}/>
     </LightsOutOverlay>
     <PlayButton onClick={showVideo}/>
