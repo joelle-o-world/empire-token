@@ -8,7 +8,7 @@ import RoadmapContent from './RoadmapContent.json'
 const {milestones} = RoadmapContent
 
 
-export const Roadmap: FunctionComponent = () => {
+export const Roadmap: FunctionComponent<{scrollable?: boolean}> = ({scrollable=false}) => {
   console.log('re-rendering roadmap')
   const [scrollProgress, setScrollProgress] = useState(0)
   const handleScroll = useCallback(e => {
@@ -16,6 +16,7 @@ export const Roadmap: FunctionComponent = () => {
       e.target.scrollTop / (e.target.scrollHeight-e.target.clientHeight)
     )
   }, [])
+
 
   const milestoneListRef = useRef(null as null|HTMLDivElement)
   const handleDragScroll = (y:number) => {
@@ -32,9 +33,38 @@ export const Roadmap: FunctionComponent = () => {
     )
   )} , [])
 
-  return <div className="Roadmap">
+
+  //const lingerMin = 100
+  //const [lingering, setLingering] = useState(false)
+  //const lingerTimer = useRef(null as any);
+  //const startLingerTimer = () => {
+    //console.log('start linger')
+    //let timeout = lingerTimer.current
+    //if(!timeout)
+      //lingerTimer.current = setTimeout(() => setLingering(true), lingerMin);
+  //}
+  //const cancelLingerTimer = () => {
+    //console.log('cancelLinger')
+    //setLingering(false)
+    //let timeout = lingerTimer.current;
+    //if(timeout)
+      //clearTimeout(timeout);
+
+    //lingerTimer.current = null
+  //}
+
+  //console.log('lingering:', lingering)
+
+  return <div 
+      className="Roadmap" 
+    >
     <EmpireStateScroller scrollProgress={scrollProgress} onScroll={handleDragScroll}/>
-    <div className="MilestonesList" onScroll={handleScroll} ref={milestoneListRef}>
+    <div 
+      className="MilestonesList" 
+      onScroll={handleScroll} 
+      style={{overflowY: scrollable ? 'auto' : 'hidden'}} 
+      ref={milestoneListRef}
+    >
       {MilestonesListItems}
     </div>
   </div>

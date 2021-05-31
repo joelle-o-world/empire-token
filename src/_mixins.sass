@@ -44,6 +44,12 @@ $contentWidth: 1208px
     font-size: 21px
 
 
+@mixin HideScrollbars
+  &::-webkit-scrollbar 
+    display: none
+  -ms-overflow-style: none // IE/Edge
+  scrollbar-width: none // Firefox
+
 @mixin FancyTextGradient
   background: linear-gradient(45deg, #18E9D9, #4FA4E1, #875FEA)
   -webkit-background-clip: text

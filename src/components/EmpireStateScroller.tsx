@@ -2,7 +2,7 @@ import React, {FunctionComponent, useRef, useState} from 'react'
 
 import './EmpireStateScroller.sass'
 
-import EmpireStateFlatMesh from '../img/EmpireStateFlatMesh.svg';
+import EmpireStateFlatMesh from '../img/Tower-Front.svg';
 import SmallLogo from '../img/SmallLogo.svg'
 
 interface EmpireStateScrollerProps {
@@ -34,10 +34,10 @@ export const EmpireStateScroller: FunctionComponent<EmpireStateScrollerProps> = 
   return <div className="EmpireStateScroller" ref={divRef} >
     <img src={EmpireStateFlatMesh} alt="CGI Empire State Building" className="ScrollerBackground"onMouseMove={handleMouseMove} onMouseDown={handleMouseMove}/>
     <button 
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      className="DragHandle"
-      style={{top: top+'px'}}
+    onMouseDown={handleMouseDown}
+    onMouseMove={handleMouseMove}
+    className="DragHandle"
+    style={{top: top+'px'}}
     ><img src={SmallLogo} alt="" /> YOU ARE HERE</button>
   </div>
 }
