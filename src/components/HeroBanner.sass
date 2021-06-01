@@ -58,7 +58,7 @@
         left: calc(50% + 362px)
       .LightsOutOverlay video
         max-width: 100%
-  @include MobileAndTabletView
+  @include MobileView
     display: flex
     flex-direction: column
     margin-top: 100px
@@ -67,10 +67,15 @@
     width: 100%
     .SoundWaves
       top: -150px
+    .ExplainerVideo
+      .PlayButtonWrapper
+        position: absolute
+        top: 200px
+        left: 50%
+        margin-left: -43px
     
     .HeroText .ButtonGroup
       display: flex
-      @include MobileView
-        flex-direction: column
+      flex-direction: column
       align-items: center
 
