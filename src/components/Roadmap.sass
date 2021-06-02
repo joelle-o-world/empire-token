@@ -22,6 +22,9 @@
     display: flex
     flex-direction: row
     align-items: center
+    @include MobileView
+      .MilestoneNumber, .SeperatorDash
+        display: none
     .MilestoneNumber
       color: #386DAC
       margin: 10px

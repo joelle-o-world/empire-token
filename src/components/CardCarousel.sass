@@ -7,6 +7,7 @@ $expandedWidth: 397px
 $expandedHeight: 493px
 
 .CardCarousel
+  @include MainFont
   box-sizing: border-box
   width: 100%
   height: 100%
@@ -44,7 +45,6 @@ $expandedHeight: 493px
       max-width: 90vw
       max-height: 90%
       box-sizing: border-box
-      padding: 20px
       border-radius: 8px
       background: radial-gradient(rgba(#204169, 0.9), rgba(#102135, 0.9))
       border: 1px solid #0F6BAE
@@ -57,6 +57,10 @@ $expandedHeight: 493px
       justify-content: center
       align-items: center
 
+      img.CardLogo
+        @include MobileView
+          height: 50px
+
       h2, p
         width: calc(#{$cardWidth} - 50px)
         box-sizing: border-box
@@ -66,6 +70,8 @@ $expandedHeight: 493px
         text-shadow: 0px 3px 8px black
         text-align: center
         margin: 20px
+        @include MobileView
+          margin: 5px
 
       p
         text-align: center
@@ -73,6 +79,7 @@ $expandedHeight: 493px
         font-weight: 200
         color: #E3E3E3
         line-height: 1.7em
+        padding: 5px
 
 
       opacity: .7

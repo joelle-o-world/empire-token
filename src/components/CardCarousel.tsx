@@ -4,8 +4,6 @@ import classNames from 'classnames';
 import './CardCarousel.sass'
 import {LittleButtons} from './LittleButtons';
 
-const standardWidth = 343
-const expandedWidth = 397
 
 export interface CardCarouselProps {
   /**
@@ -27,6 +25,8 @@ export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
 
   const slidesRef = useRef(null as null|HTMLUListElement)
   const focusCard = (i: number) => {
+    const standardWidth = Math.min(343, .9 * window.innerWidth)
+    const expandedWidth = Math.min(397, .9 * window.innerWidth)
     let slides = slidesRef.current
     if(slides) {
       let card = slides.childNodes[i];
