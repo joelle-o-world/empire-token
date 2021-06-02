@@ -66,21 +66,38 @@ body
     height: 100%
 
 .TiltingLogoWrapper1
-  top: 2200px
+  @include DesktopView
+    top: 2200px
+  @include TabletView
+    top: 1520px
+    height: 275px
 .TiltingLogoWrapper2
-  top:5750px
+  @include DesktopView
+    top:5750px
+  @include TabletView
+    top: 4125px
+    height: 400px
+
 
 
 .RoadmapWrapper
   position: absolute
-  top: 3050px
   left: 0px
   right: 0px
   height: 950px
+  @include DesktopView
+    top: 3050px
+  @include TabletView
+    top: 2120px
 
 .FooterContactFormWrapper
   position: absolute
-  top: 6580px
-  right: calc(50% - 75px)
-  left: calc(50% - 550px)
+  @include DesktopView
+    top: 6580px
+    right: calc(50% - 75px)
+    left: calc(50% - 550px)
+  @include TabletView
+    top: 4630px
+    right: calc(50% - 300px)
+    left: calc(50% - 300px)
 

@@ -14,17 +14,16 @@ export const Roadmap: FunctionComponent<{scrollable?: boolean}> = ({scrollable=f
     const div = milestoneListRef.current
     if(div) {
       let newProgress = div.scrollTop / (div.scrollHeight-div.clientHeight)
-      let delta = scrollProgress - newProgress
+      //let delta = scrollProgress - newProgress
       setScrollProgress( newProgress)
-      console.log(delta)
-      if(Math.abs(delta) > .001) {
-        let {top} = div.getBoundingClientRect()
-        if(top > 210 || top < 190 && lingering)
-          window.scrollTo({
-            top: window.scrollY + top - 200,
-            behavior: 'smooth'
-          })
-      }
+      //if(Math.abs(delta) > .001) {
+        //let {top} = div.getBoundingClientRect()
+        //if(top > 210 || top < 190 && lingering)
+          //window.scrollTo({
+            //top: window.scrollY + top - 200,
+            //behavior: 'smooth'
+          //})
+      //}
     }
   }, [scrollProgress])
 
