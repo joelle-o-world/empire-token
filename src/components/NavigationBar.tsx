@@ -19,8 +19,18 @@ import TelegramIcon from '../img/Telegram.svg';
 export const NavigationBar: FunctionComponent = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleMenu = () => setMenuOpen(val => !val)
-  const openMenu = () => setMenuOpen(true)
+  //const openMenu = () => setMenuOpen(true)
   const closeMenu = () => setMenuOpen(false)
+
+  const [isStuck, setIsStuck] = useState(false)
+  useEffect(() => {
+    const checkIsStuck = () => {
+      setIsStuck(window.scrollY > 20)
+    }
+    checkIsStuck();
+    window.addEventListener('scroll', checkIsStuck)
+    return () => window.removeEventListener('scroll', checkIsStuck)
+  }, [setIsStuck])
 
   useEffect(() => {
     if(menuOpen) {
@@ -29,7 +39,7 @@ export const NavigationBar: FunctionComponent = () => {
     }
   }, [menuOpen])
 
-  return <div className="NavigationBar">
+  return <div className={classNames("NavigationBar", {isStuck})}>
 
     <img className="SiteLogo" src={SideTextLogo} alt="Empire Token" />
 
