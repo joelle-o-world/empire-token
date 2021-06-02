@@ -1,3 +1,4 @@
+@use "mixins" as *
 
 body
   overflow-x: hidden
@@ -13,7 +14,11 @@ body
 
 .HowEmpireCanBeUsedWrapper
   position: absolute
-  top: 1412px
+  @include DesktopView
+    top: 1412px
+  @include TabletView
+    top: 920px
+    height: 430px
   //border: dotted white
   left: 0px
   right: 0px
@@ -22,10 +27,14 @@ body
 
 .CountdownWrapper
   position: absolute
-  top: 900px
   left: 0px
   right: 0px
-  height: 300px
+  @include DesktopView
+    top: 900px
+    height: 300px
+  @include TabletView
+    top: 620px
+    
 
 .HeroBannerWrapper
   position: absolute

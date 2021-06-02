@@ -41,6 +41,7 @@ $expandedHeight: 493px
       margin: 20px
       width: $cardWidth
       height: $cardHeight
+      max-height: 90%
       box-sizing: border-box
       padding: 20px
       border-radius: 8px
@@ -73,13 +74,15 @@ $expandedHeight: 493px
         line-height: 1.7em
 
 
-      transition: box-shadow 1.5s , width .3s, height .3s
+      opacity: .7
+      transition: box-shadow 1.5s , width .3s, height .3s, opacity .3s
       &.InFocus
         border: 1.5px solid #18E9D9
         background: radial-gradient(rgba(#204169, 0.9), rgba(#204169, 0.9), rgba(#33699A, 0.9))
         box-shadow: 0px 3px 33px rgba(#18E9D9, .55)
         width: $expandedWidth
         height: $expandedHeight
+        opacity: 1
         &::before
           content: " "
           position: absolute

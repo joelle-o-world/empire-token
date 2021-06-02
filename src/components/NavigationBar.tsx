@@ -33,7 +33,9 @@ export const NavigationBar: FunctionComponent = () => {
 
     <img className="SiteLogo" src={SideTextLogo} alt="Empire Token" />
 
-    <button className="OpenBurgerMenuButton" onClick={toggleMenu}><IoMdMenu/></button>
+    {
+      !menuOpen && <button className="OpenBurgerMenuButton" onClick={toggleMenu}><IoMdMenu/></button>
+    }
 
     <div className={classNames(
       "NavigationBarMenu", 

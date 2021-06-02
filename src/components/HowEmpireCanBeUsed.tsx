@@ -7,7 +7,7 @@ import NFTsIcon from '../img/NftIcon.png';
 import PodcastIcon from '../img/PodcastIcon.png';
 
 export const HowEmpireCanBeUsed: FunctionComponent = () => {
-  return <CardCarousel noScroll focussedCard={1}>
+  return <CardCarousel>
     <Card>
       <img src={EventsIcon} alt="" />
       <h2>Events</h2>
