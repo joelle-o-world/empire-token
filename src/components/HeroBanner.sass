@@ -58,6 +58,8 @@
         left: calc(50% + 362px)
       .LightsOutOverlay video
         max-width: 100%
+
+.HeroBanner
   @include MobileView
     display: flex
     flex-direction: column
@@ -65,19 +67,44 @@
     padding: 15px
     box-sizing: border-box
     width: 100%
+    .HeroBannerForeground
+      position: absolute
+      width: 100%
+      top: 200px
+      left: 30%
+      object-fit: contain
     .SoundWaves
       top: -150px
     .ExplainerVideo
       .PlayButtonWrapper
         position: absolute
-        top: 200px
-        left: 50%
+        top: 275px
+        left: 80%
         margin-left: -43px
     
-    .HeroText .ButtonGroup
-      display: flex
-      flex-direction: column
-      align-items: center
+    .HeroText 
+      position: relative
+      z-index: 5
+
+      >h1, >p:first-child, >.ButtonGroup
+        margin-bottom: 5px
+        width: 60%
+      width: 100%
+      
+      p
+        font-size: 14px
+      .ButtonGroup 
+        display: flex
+        button 
+          font-size: 14px
+          min-width: auto
+          padding-left: 10px
+          padding-right: 10px
+          padding-top: 4px
+          padding-bottom: 4px
+          margin: 5px
+          min-height: auto
+
 
 .HeroBanner
   @include TabletView

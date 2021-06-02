@@ -19,6 +19,9 @@ body
   @include TabletView
     top: 920px
     height: 430px
+  @include MobileView
+    top: 850px
+    height: 400px
   //border: dotted white
   left: 0px
   right: 0px
@@ -34,6 +37,8 @@ body
     height: 300px
   @include TabletView
     top: 620px
+  @include MobileView
+    top: 615px
     
 
 .HeroBannerWrapper
@@ -71,11 +76,17 @@ body
   @include TabletView
     top: 1520px
     height: 275px
+  @include MobileView
+    top: 1350px
+    height: 275px
 .TiltingLogoWrapper2
   @include DesktopView
     top:5750px
   @include TabletView
     top: 4125px
+    height: 400px
+  @include MobileView
+    top: 4570px
     height: 400px
 
 
@@ -89,6 +100,9 @@ body
     top: 3050px
   @include TabletView
     top: 2120px
+  @include MobileView
+    top: 2155px
+    height: 500px
 
 .FooterContactFormWrapper
   position: absolute
@@ -100,4 +114,9 @@ body
     top: 4630px
     right: calc(50% - 300px)
     left: calc(50% - 300px)
+  @include MobileView
+    top: 5050px
+    left: 10px
+    right: 10px
+    height: 500px
 

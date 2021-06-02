@@ -41,9 +41,7 @@ function App() {
       <div className="TiltingLogoWrapper TiltingLogoWrapper2">
       {
         <TiltingLogo/> 
-
       }
-        cakes!
       </div>
 
       <div className="FooterContactFormWrapper">

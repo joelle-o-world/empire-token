@@ -1,7 +1,11 @@
 @use "../mixins" as *
 
 .ContactForm
-  height: 247px
+  @include DesktopView
+    height: 247px
+  @include TabletView
+    height: 247px
+  margin-bottom: 50px
   display: flex
   flex-direction: column
   flex-wrap: wrap
@@ -31,6 +35,8 @@
 
   small
     order: 3
+    @include MobileView
+      order: 7
     @include MainFont
     color: #386DAC
     display: flex
