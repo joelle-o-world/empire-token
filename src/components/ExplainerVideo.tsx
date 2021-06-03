@@ -4,7 +4,7 @@ import PlayButton from './PlayButton'
 
 
 import ExplainerVideoFile from '../video/sample_video.mp4'
-//import {IoMdCloseCircle} from 'react-icons/io';
+import {IoMdCloseCircle} from 'react-icons/io';
 
 export const ExplainerVideo: FunctionComponent = () => {
   const [showingVideo, setShowingVideo] = useState(false);
@@ -29,9 +29,9 @@ export const ExplainerVideo: FunctionComponent = () => {
   }, [])
 
   return <div className="ExplainerVideo">
-
     <LightsOutOverlay active={showingVideo}>
-      <video ref={videoRef} src={ExplainerVideoFile} onEnded={hideVideo}/>
+      <button className="CloseVideo CloseButton" onClick={hideVideo}><IoMdCloseCircle/></button>
+      <video controls ref={videoRef} src={ExplainerVideoFile} />
     </LightsOutOverlay>
     <PlayButton onClick={showVideo}/>
 

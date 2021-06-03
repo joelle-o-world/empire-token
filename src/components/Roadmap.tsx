@@ -102,7 +102,7 @@ const formatDate = (date: Date) => `${
 export const Milestone: FunctionComponent<MilestoneProps> = ({floorNumber, date, title}) => {
   let formattedDate = typeof date === 'string' ? formatDate(new Date(date)) : '--'
   return <div className="Milestone">
-    <div className="MilestoneNumber">{floorNumber}</div>
+    <div className="MilestoneNumber">{floorNumber + ' - '}</div>
     <img src={DashSeperator} className="DashSeperator" alt="-"/>
     {
       //<div className="SkyScaperWindows">

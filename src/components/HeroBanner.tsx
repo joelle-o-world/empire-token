@@ -20,12 +20,19 @@ export const HeroBanner: FunctionComponent = () => {
     }
     <div className="HeroText">
       <h1><img src={KeepClimbingHeader} alt="Keep Climbing"/></h1>
-          <p>While everyone is going to the moon. We are inviting the astronauts into our world, we will take them to a very memorable journey, taking the stairs up the empire state building. <a href="read more link" className="ReadMoreLink">Read More</a></p>
+        <p> Built as a super token, Empire brings the world of non-fungible tokens (NFTs) to a different level.  
+       We will include all-in-one, that’s why we will like to call it a super token! NFTs is a hot topic so we decided to start with a real life solution for NFTs as our first use case.  </p>
+        <p> Our NFT marketplace will give our users the platform to trade, stake and license NFTs for commercial use.  
+         We are here to bring a whole new dimension to the world of crypto by bringing it to real life applications and use cases.  </p>
         <div className="ButtonGroup">
         <button onClick={openBSCScan}>BSCSCAN</button>
-        <button onClick={openPriceChart}>PRICE CHART</button>
+        <button onClick={() => window.open("whitepaper.pdf", "blank")}>WHITE PAPER</button>
       </div>
-      <p><strong>Supply:</strong> 1,000,000,000,000,000</p>
+
+      <p className="Statistics"> Token name: Empire Token<br/> 
+      Symbol: Empire <br/>
+      Decimal: 18 <br/>
+      <strong>Supply:</strong> 1,000,000,000,000,000</p>
 
       <div className="TokenAddress">
         <h3>TOKEN ADDRESS:</h3>

@@ -44,7 +44,7 @@ export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
   }
 
   // eslint-disable-next-line
-  useEffect(() => focusCard(1) , [])
+  useEffect(() => focusCard(2) , [])
 
   const handleDoneScrolling = (e:any) => {
     const div = e.nativeEvent.target as HTMLDivElement

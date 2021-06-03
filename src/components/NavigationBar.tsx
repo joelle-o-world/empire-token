@@ -56,13 +56,13 @@ export const NavigationBar: FunctionComponent = () => {
       <button className="CloseBurgerMenuButton" onClick={closeMenu}><IoMdClose/></button>
       <div className="TopRow">
         <nav className="SocialMedia">
-          <SocialMediaIcon img={TwitterIcon} alt="Twitter" />
-          <SocialMediaIcon img={RedditIcon} alt="Reddit" />
-          <SocialMediaIcon img={InstagramIcon} alt="Instagram" />
-          <SocialMediaIcon img={GithubIcon} alt="Github" />
-          <SocialMediaIcon img={LinkedinIcon} alt="LinkedIn" />
-          <SocialMediaIcon img={YoutubeIcon} alt="YouTube" />
-          <SocialMediaIcon img={TelegramIcon} alt="Telegram" />
+          <SocialMediaIcon img={TwitterIcon} url="http://twitter.com" alt="Twitter" />
+          <SocialMediaIcon img={RedditIcon} alt="Reddit" url="http://reddit.com" />
+          <SocialMediaIcon img={InstagramIcon} alt="Instagram" url="http://instagram.com" />
+          <SocialMediaIcon img={GithubIcon} alt="Github" url="https://github.com" />
+          <SocialMediaIcon img={LinkedinIcon} alt="LinkedIn" url="http://linkedin.com" />
+          <SocialMediaIcon img={YoutubeIcon} alt="YouTube" url="http://youtube.com" />
+          <SocialMediaIcon img={TelegramIcon} alt="Telegram" url="http://telegram.org"/>
         </nav>
         <PurpleFancyButton onClick={handleBuyNow}>BUY EMPIRE NOW!</PurpleFancyButton>
       </div>

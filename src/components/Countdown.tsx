@@ -5,7 +5,7 @@ import './Countdown.sass'
 const PHI = 2 * Math.PI;
 const halfPI = Math.PI/2
 
-const countDownDate = new Date(2021, 6, 7, 16,0)
+const countDownDate = new Date(2021, 5, 7, 16,0)
 
 export const Countdown: FunctionComponent = () => {
   return <div className="Countdown">

@@ -15,6 +15,7 @@ $expandedHeight: 493px
   flex-direction: column
   &:not(.noScroll) .CardCarouselSlides
     overflow-x: auto
+    overflow-y: visible
   &.noScroll .CardCarouselSlides
     justify-content: center
     .CardCarouselCard:not(.InFocus)
@@ -43,7 +44,7 @@ $expandedHeight: 493px
       width: $cardWidth
       height: $cardHeight
       max-width: 90vw
-      max-height: 90%
+      max-height: calc(90% - 40px)
       box-sizing: border-box
       border-radius: 8px
       background: radial-gradient(rgba(#204169, 0.9), rgba(#102135, 0.9))
@@ -60,6 +61,8 @@ $expandedHeight: 493px
       img.CardLogo
         @include MobileView
           height: 50px
+        @include TabletView
+          height: 75px
 
       h2, p
         width: calc(#{$cardWidth} - 50px)
@@ -75,7 +78,10 @@ $expandedHeight: 493px
 
       p
         text-align: center
-        font-size: 16px
+        @include DesktopView
+          font-size: 16px
+        @include MobileAndTabletView
+          font-size: 14px
         font-weight: 200
         color: #E3E3E3
         line-height: 1.7em

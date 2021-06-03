@@ -1,4 +1,6 @@
 {
+  "price": 10,
+  "priceGoal": 443,
   "milestones": [
     { "date": "2021-04-10", "title": "Launch of the website" },
     { "date": "2021-04-07", "title": "Social Media Accounts" },
@@ -15,7 +17,7 @@
     { "date": "2021-04-10", "title": "NFT Staking Pool" },
     { "date": "2021-04-07", "title": "First Partnerships Announcement" },
 
-    { "date": null, "title": "-- to be updated --" },
+    { "date": "2021-04-07", "title": "CEX Listing" },
     { "date": null, "title": "-- to be updated --" },
     { "date": null, "title": "-- to be updated --" },
     { "date": null, "title": "-- to be updated --" },

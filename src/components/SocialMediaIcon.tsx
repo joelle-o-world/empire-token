@@ -9,7 +9,7 @@ export interface SocialMediaIconProps {
 }
 
 export const SocialMediaIcon: FunctionComponent<SocialMediaIconProps> = ({img, url, alt}) => {
-  return <a href={url} className="SocialMediaIcon">
+  return <a href={url} target="blank" className="SocialMediaIcon">
     <img src={img} alt={alt} />
   </a>
 }
