@@ -31,7 +31,8 @@ const SoundWavesFShader = `
 precision mediump float;
 
 void main() {
-  gl_FragColor = vec4(.27, .29, .31, 0.5);
+  //gl_FragColor = vec4(.27, .29, .31, 0.5);
+  gl_FragColor = vec4(.11, .13, .38, .5);
 }
 `
 
