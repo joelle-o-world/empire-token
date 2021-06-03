@@ -1,4 +1,6 @@
+@use '../mixins' as *
 .Countdown
+  @include MainFont
   display: flex
   flex-direction: row
   justify-content: space-around
@@ -9,6 +11,7 @@
   margin-left: auto
   height: 100%
   box-sizing: border-box
+  position: relative
   .CountdownClock
     //margin: 20px
     canvas

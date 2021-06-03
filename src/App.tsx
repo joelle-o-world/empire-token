@@ -25,6 +25,7 @@ function App() {
 
 
       <div className="CountdownWrapper">
+        <h2>Time until Presale</h2>
         <Countdown />
       </div>
 

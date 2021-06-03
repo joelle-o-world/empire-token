@@ -5,18 +5,20 @@ import './Countdown.sass'
 const PHI = 2 * Math.PI;
 const halfPI = Math.PI/2
 
+const countDownDate = new Date(2021, 6, 7, 16,0)
+
 export const Countdown: FunctionComponent = () => {
   return <div className="Countdown">
     <div>
-      <CountdownClock fromTime={new Date(2021, 1,1)} interval={24*60*60*1000} modulo={Infinity} />
+      <CountdownClock fromTime={countDownDate} interval={24*60*60*1000} modulo={Infinity} />
       <h3>Days</h3>
     </div>
     <div>
-      <CountdownClock fromTime={new Date(2021, 1,1)} interval={60*60*1000} modulo={24} />
+      <CountdownClock fromTime={countDownDate} interval={60*60*1000} modulo={24} />
       <h3>Hours</h3>
     </div>
     <div>
-      <CountdownClock fromTime={new Date(2021, 1,1)} interval={60*1000} modulo={60} />
+      <CountdownClock fromTime={countDownDate} interval={60*1000} modulo={60} />
       <h3>Minutes</h3>
     </div>
   </div>
@@ -83,7 +85,7 @@ export const CountdownClock: FunctionComponent<CountdownClockProps> = ({fromTime
           ctx.textAlign = 'center'
           ctx.font = '30px sans-serif'
           ctx.textBaseline = 'middle'
-          ctx.fillText(String(n % modulo), cx,cy, radius*2-10)
+          ctx.fillText(String(Math.abs(n) % modulo), cx,cy, radius*2-10)
 
           window.requestAnimationFrame(draw);
         }

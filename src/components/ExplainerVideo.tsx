@@ -4,7 +4,7 @@ import PlayButton from './PlayButton'
 
 
 import ExplainerVideoFile from '../video/sample_video.mp4'
-import {IoMdCloseCircle} from 'react-icons/io';
+//import {IoMdCloseCircle} from 'react-icons/io';
 
 export const ExplainerVideo: FunctionComponent = () => {
   const [showingVideo, setShowingVideo] = useState(false);

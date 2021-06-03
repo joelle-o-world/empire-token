@@ -5,11 +5,11 @@ import DashSeperator from '../img/DashSeperator.svg'
 import EmpireStateScroller from './EmpireStateScroller';
 
 import RoadmapContent from './RoadmapContent.json'
-const {milestones} = RoadmapContent
+const milestones = RoadmapContent.milestones.reverse()
 
 
 export const Roadmap: FunctionComponent<{scrollable?: boolean}> = ({scrollable=false}) => {
-  const [scrollProgress, setScrollProgress] = useState(0)
+  const [scrollProgress, setScrollProgress] = useState(1)
   const handleScroll = useCallback((e:React.WheelEvent<HTMLDivElement>) => {
     const div = milestoneListRef.current
     if(div) {
@@ -25,7 +25,7 @@ export const Roadmap: FunctionComponent<{scrollable?: boolean}> = ({scrollable=f
           //})
       //}
     }
-  }, [scrollProgress])
+  }, [])
 
 
   const milestoneListRef = useRef(null as null|HTMLDivElement)
@@ -36,9 +36,12 @@ export const Roadmap: FunctionComponent<{scrollable?: boolean}> = ({scrollable=f
       list.scrollTo({left:0, top: y * (list.scrollHeight - list.clientHeight)})
     }
   }
+
+  useEffect(() => { handleDragScroll(1) }, [])
+
   const MilestonesListItems = useMemo(() => {
     return milestones.map(({date, title}, i) => (
-      <Milestone date={new Date(date)} title={title} key={i} floorNumber={milestones.length-i} />
+      <Milestone date={date} title={title} key={i} floorNumber={milestones.length-i} />
     )
   )} , [])
 
@@ -86,7 +89,7 @@ export const Roadmap: FunctionComponent<{scrollable?: boolean}> = ({scrollable=f
 export default Roadmap;
 
 export interface MilestoneProps {
-  date: Date;
+  date: string|null;
   title: string;
   floorNumber: number;
 }
@@ -97,6 +100,7 @@ const formatDate = (date: Date) => `${
 }/${String(date.getFullYear()%100).padStart(2,'0')}`
 
 export const Milestone: FunctionComponent<MilestoneProps> = ({floorNumber, date, title}) => {
+  let formattedDate = typeof date === 'string' ? formatDate(new Date(date)) : '--'
   return <div className="Milestone">
     <div className="MilestoneNumber">{floorNumber}</div>
     <img src={DashSeperator} className="DashSeperator" alt="-"/>
@@ -108,7 +112,7 @@ export const Milestone: FunctionComponent<MilestoneProps> = ({floorNumber, date,
       //</div>
     }
     <div className="MilestoneInfoBox">
-      <h4 className="MilestoneDate">{formatDate(date)}</h4>
+      <h4 className="MilestoneDate">{formattedDate}</h4>
       <h3 className="MilestoneTitle">{title}</h3>
     </div>
   </div>

@@ -39,6 +39,8 @@ export const NavigationBar: FunctionComponent = () => {
     }
   }, [menuOpen])
 
+  const handleBuyNow = () => window.open("https://pancakeswap.finance", "blank")
+
   return <div className={classNames("NavigationBar", {isStuck})}>
 
     <img className="SiteLogo" src={SideTextLogo} alt="Empire Token" />
@@ -62,13 +64,17 @@ export const NavigationBar: FunctionComponent = () => {
           <SocialMediaIcon img={YoutubeIcon} alt="YouTube" />
           <SocialMediaIcon img={TelegramIcon} alt="Telegram" />
         </nav>
-        <PurpleFancyButton>BUY EMPIRE NOW!</PurpleFancyButton>
+        <PurpleFancyButton onClick={handleBuyNow}>BUY EMPIRE NOW!</PurpleFancyButton>
       </div>
       <nav className="BottomRow SiteLinks">
-        <a href="link1">Home</a>
+        {
+          <a href="/">Home</a>
+        }
         <a href="link2">Audit</a>
-        <a href="link3">Price Chart</a>
-        <a href="link4">Renounce Of Ownership</a>
+        <a href="http://poocoin.com" target="blank">Price Chart</a>
+        {
+          //<a href="link4">Renounce Of Ownership</a>
+        }
       </nav>
     </div>
   </div>

@@ -42,7 +42,6 @@ const sq = (x:number) => x*x
   Be sure to handle exceptions when calling this function.
  */
 export function startSoundWaves(canvas: HTMLCanvasElement):void {
-  console.log('startingSoundWaves');
 
   const gl = getWebGLContext(canvas)
 
@@ -71,7 +70,6 @@ export function startSoundWaves(canvas: HTMLCanvasElement):void {
   gl.bindBuffer(gl.ARRAY_BUFFER, bufferObject);
   gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);
 
-  console.log(vertexData);
 
   const positionAttribLocation = gl.getAttribLocation(program, 'position');
   gl.vertexAttribPointer(
@@ -188,7 +186,7 @@ function makeWaveVertices({
     }
   }
 
-  console.log("sound waves memory:", buffer.length * Float32Array.BYTES_PER_ELEMENT, "bytes")
+  //console.log("sound waves memory:", buffer.length * Float32Array.BYTES_PER_ELEMENT, "bytes")
 
   return { 
     vertexData: buffer,

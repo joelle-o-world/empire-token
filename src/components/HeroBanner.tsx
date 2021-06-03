@@ -8,6 +8,9 @@ import ExplainerVideo from './ExplainerVideo'
 import KeepClimbingHeader from '../img/KeepClimbingHeader.png';
 import {ClipboardButton} from './ClipboardButton';
 
+const openBSCScan = () => window.open("http://bscscan.com", "_blank")
+const openPriceChart = () => window.open("http://poocoin.com", "_blank")
+
 export const HeroBanner: FunctionComponent = () => {
   return <div className="HeroBanner">
     <SoundWaves/>
@@ -16,11 +19,11 @@ export const HeroBanner: FunctionComponent = () => {
       <ExplainerVideo/>
     }
     <div className="HeroText">
-    <h1><img src={KeepClimbingHeader} alt="Keep Climbing"/></h1>
-      <p>While everyone is going to the moon. We are inviting the astronauts into our world, we will take them to a very memorable journey, taking the stairs up the empire state building. <a href="read more link" className="ReadMoreLink">Read More</a></p>
-      <div className="ButtonGroup">
-        <button>BSCSCAN</button>
-        <button>PRICE CHART</button>
+      <h1><img src={KeepClimbingHeader} alt="Keep Climbing"/></h1>
+          <p>While everyone is going to the moon. We are inviting the astronauts into our world, we will take them to a very memorable journey, taking the stairs up the empire state building. <a href="read more link" className="ReadMoreLink">Read More</a></p>
+        <div className="ButtonGroup">
+        <button onClick={openBSCScan}>BSCSCAN</button>
+        <button onClick={openPriceChart}>PRICE CHART</button>
       </div>
       <p><strong>Supply:</strong> 1,000,000,000,000,000</p>
 

@@ -10,7 +10,7 @@ interface PlayButtonProps {
 
 export const PlayButton: FunctionComponent<PlayButtonProps> = ({onClick}) => {
   return <div className="PlayButtonWrapper">
-    <img src={PlayButtonHalo} className="PlayButtonHalo" />
+    <img src={PlayButtonHalo} className="PlayButtonHalo" alt="" />
     <button 
       onClick={onClick}
       className="PlayButton"

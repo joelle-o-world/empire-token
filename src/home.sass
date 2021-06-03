@@ -32,13 +32,26 @@ body
   position: absolute
   left: 0px
   right: 0px
+  h2
+    @include MainFont
+    @include FancyTextGradient
+    color: white
+    text-align: center
+    font-size: 24px
+
   @include DesktopView
-    top: 900px
-    height: 300px
+    top: 950px
+    height: 200px
   @include TabletView
-    top: 620px
+    top: 610px
+    height: 160px
+    h2 
+      font-size: 15px
+      margin-bottom: -10px
   @include MobileView
     top: 615px
+    h2 
+      font-size: 15px
     
 
 .HeroBannerWrapper

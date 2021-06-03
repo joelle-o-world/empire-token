@@ -43,6 +43,7 @@ export const CardCarousel: FunctionComponent<CardCarouselProps> = ({
     }
   }
 
+  // eslint-disable-next-line
   useEffect(() => focusCard(1) , [])
 
   const handleDoneScrolling = (e:any) => {
