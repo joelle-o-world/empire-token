@@ -3,7 +3,11 @@
   display: flex
   justify-content: center
   align-items: center
-  max-height: calc(90vh - 130px)
+  height: calc(90vh - 130px)
+  @include DesktopView
+    max-height: 900px
+  @include TabletView
+    max-height: 550px
   margin-right: 30px
   margin-left: 30px
   .EmpireStateScroller, .ScrollBar
@@ -12,8 +16,13 @@
   .MilestonesList
     @include HideScrollbars
     box-sizing: border-box
-    height: 770px
-    max-height: calc(90vh - 130px)
+    height: calc(90vh - 130px)
+    @include DesktopView
+      max-height: 900px
+    @include TabletView
+      max-height: 550px
+    @include MobileView
+      max-height: 500px
     overflow: auto
     border-top: 2px solid #386DAC
     border-bottom: 2px solid #386DAC
