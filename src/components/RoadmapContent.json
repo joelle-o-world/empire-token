@@ -1,5 +1,5 @@
 {
-  "price": 10,
+  "currentPrice": 10.2,
   "priceGoal": 443,
   "milestones": [
     { "date": "2021-04-10", "title": "Launch of the website" },

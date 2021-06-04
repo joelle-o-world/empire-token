@@ -4,9 +4,12 @@ import './Roadmap.sass'
 import DashSeperator from '../img/DashSeperator.svg'
 import EmpireStateScroller from './EmpireStateScroller';
 import ScrollBar from './ScrollBar';
+import RoadmapArrow from './RoadmapArrow'
 
 import RoadmapContent from './RoadmapContent.json'
 const milestones = RoadmapContent.milestones.reverse()
+const priceProgress = RoadmapContent.currentPrice / RoadmapContent.priceGoal
+const arrowFloorNumber = Math.floor(priceProgress * milestones.length)
 
 
 export const Roadmap: FunctionComponent<{scrollable?: boolean}> = ({scrollable=false}) => {
@@ -105,6 +108,9 @@ export const Milestone: FunctionComponent<MilestoneProps> = ({floorNumber, date,
   let formattedDate = typeof date === 'string' ? formatDate(new Date(date)) : '--'
   return <div className="Milestone">
     <div className="MilestoneNumber">{floorNumber + ' - '}</div>
+    { arrowFloorNumber === floorNumber 
+      ? <RoadmapArrow/>
+      : null }
     <img src={DashSeperator} className="DashSeperator" alt="-"/>
     {
       //<div className="SkyScaperWindows">
