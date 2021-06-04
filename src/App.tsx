@@ -8,6 +8,8 @@ import TiltingLogo from './TiltingLogo';
 import Roadmap from './components/Roadmap'
 import ContactForm from './components/ContactForm';
 import HeroBanner from './components/HeroBanner';
+import SiteLinks from './components/SiteLinks';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -45,9 +47,10 @@ function App() {
       }
       </div>
 
-      <div className="FooterContactFormWrapper">
-        <ContactForm/>
+      <div className="FooterWrapper">
+        <Footer/>
       </div>
+
     </>
   );
 }

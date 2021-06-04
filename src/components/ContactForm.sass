@@ -2,17 +2,17 @@
 
 .ContactForm
   @include DesktopView
-    height: 247px
+    height: 254px
+    margin-right: 300px
   @include TabletView
     height: 247px
+    margin-left: -206px
   margin-bottom: 50px
   display: flex
   flex-direction: column
   flex-wrap: wrap
   align-items: stretch
   input, button, textarea
-    min-width: 300px
-  .NameInput
     @include EmpireInput
     order: 1
     flex-basis: 70px
