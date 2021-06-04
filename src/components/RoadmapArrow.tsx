@@ -10,7 +10,7 @@ import RoadmapContent from './RoadmapContent.json';
 
 export const RoadmapArrow: FunctionComponent = () => {
   const targetPercentage = Math.round(100 * RoadmapContent.currentPrice / RoadmapContent.priceGoal) + '%'
-  return <div className="RoadmapArrow">
+  return <div className="RoadmapArrow" id="RoadmapArrow">
     <img alt="" src={RoadmapArrowLogo} />
     <span className="RoadmapArrowPrice">{`$${RoadmapContent.currentPrice}`}</span>
     <div className="Seperator"/>

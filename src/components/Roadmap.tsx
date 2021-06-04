@@ -41,7 +41,11 @@ export const Roadmap: FunctionComponent<{scrollable?: boolean}> = ({scrollable=f
     }
   }
 
-  useEffect(() => { handleDragScroll(1) }, [])
+  useEffect(() => { 
+    let arrow = document.getElementById('RoadmapArrow')
+    if(arrow)
+      arrow.scrollIntoView({block: 'center'})
+  }, [])
 
   const MilestonesListItems = useMemo(() => {
     return milestones.map(({date, title}, i) => (
