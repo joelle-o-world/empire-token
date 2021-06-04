@@ -16557,7 +16557,7 @@
   top: 4241px;
   width: 900px;
 }
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 767px) {
   .screen.empire-token { 
     display: none;
    }
@@ -16565,7 +16565,7 @@
     display: none;
    }
 }
-@media screen and (min-width: 1280px) and (max-width: 1919px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .screen.empire-token { 
     display: none;
    }
@@ -16573,7 +16573,7 @@
     display: none;
    }
 }
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1280px) {
   .screen.x768 { 
     display: none;
    }
