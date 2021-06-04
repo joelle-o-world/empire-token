@@ -16,7 +16,9 @@ export const RoadmapArrow: FunctionComponent = () => {
     <div className="Seperator"/>
     <span className="TargetReached">
       <span className="TargetReachedPercentage">{targetPercentage}</span>
-      Target Reached
+      {
+        `Target Reached ($${RoadmapContent.priceGoal})`
+      }
     </span>
 
     <img alt="arrow" src={RoadmapArrowGraphic} className="RoadmapArrowGraphic" />
