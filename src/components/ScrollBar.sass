@@ -1,0 +1,46 @@
+@use "../mixins" as *
+.ScrollBar
+  position: relative
+  height: 800px
+  min-width: 32px
+  max-height: calc(100vh - 200px)
+  box-sizing: border-box
+  .ScrollerBackground
+    background-color: #051427
+    position: absolute
+    top: 0px
+    height: 100%
+    width: 100%
+    box-sizing: border-box
+    object-fit: contain
+    overflow: hidden
+    border-left: 1px solid #253b5e
+    border-right: 1px solid #253b5e
+    background: linear-gradient(to right, #204169, #102135)
+    left: 0px
+    right: 0px
+    draggable: none
+    border-radius: 15px
+
+  button.DragHandle
+    @include FancyBGGradient
+    position: absolute
+    left: 1px
+    width: 30px
+    height: 30px
+    border-radius: 15px
+    border: 1px solid #4FA4E1
+    z-index: 9
+    color: #E3E3E3
+    font-family: Rubik, sans-serif
+    font-size: 16px
+    font-weight: 200
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    cursor: grab
+    &:active
+      cursor: grabbing
+    >img
+      margin-right: 7px

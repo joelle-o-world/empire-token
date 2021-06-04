@@ -3,6 +3,7 @@ import React, {FunctionComponent, useCallback, useMemo, useRef, useState, useEff
 import './Roadmap.sass'
 import DashSeperator from '../img/DashSeperator.svg'
 import EmpireStateScroller from './EmpireStateScroller';
+import ScrollBar from './ScrollBar';
 
 import RoadmapContent from './RoadmapContent.json'
 const milestones = RoadmapContent.milestones.reverse()
@@ -83,6 +84,7 @@ export const Roadmap: FunctionComponent<{scrollable?: boolean}> = ({scrollable=f
     >
       {MilestonesListItems}
     </div>
+    <ScrollBar scrollProgress={scrollProgress} onScroll={handleDragScroll} />
   </div>
 }
 
