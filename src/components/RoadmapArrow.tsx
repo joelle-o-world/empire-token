@@ -4,6 +4,7 @@ import './RoadmapArrow.sass';
 
 import RoadmapArrowLogo from '../img/RoadmapArrowLogo.png';
 import RoadmapArrowGraphic from '../img/RoadmapArrow.png';
+import RoadmapArrowShadow from '../img/RoadmapArrowShadow.png';
 
 import RoadmapContent from './RoadmapContent.json';
 
